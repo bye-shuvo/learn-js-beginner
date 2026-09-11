@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%" fill="none">
+  <!-- Window Background -->
+  <rect width="800" height="480" rx="12" fill="#1e1e2e" stroke="#313244" stroke-width="2"/>
+  
+  <!-- Window Header / Titlebar -->
+  <rect width="800" height="38" rx="12" fill="#181825"/>
+  <rect y="26" width="800" height="12" fill="#181825"/>
+  <circle cx="20" cy="19" r="6" fill="#f38ba8"/>
+  <circle cx="38" cy="19" r="6" fill="#f9e2af"/>
+  <circle cx="56" cy="19" r="6" fill="#a6e3a1"/>
+  <text x="400" y="24" fill="#a6adc8" font-family="system-ui, -apple-system, sans-serif" font-size="13" text-anchor="middle" font-weight="500">index.js — Visual Studio Code</text>
+
+  <!-- Activity Bar (Leftmost narrow strip) -->
+  <rect x="0" y="38" width="48" height="442" fill="#11111b" stroke="#313244" stroke-width="1"/>
+  <!-- File Explorer Icon -->
+  <path d="M16 60h16v16H16z" fill="#89b4fa" opacity="0.9" rx="2"/>
+  <!-- Search Icon -->
+  <circle cx="24" cy="95" r="6" stroke="#6c7086" stroke-width="2"/>
+  <path d="M28 100l5 5" stroke="#6c7086" stroke-width="2" stroke-linecap="round"/>
+  <!-- Extensions Icon (Highlighted) -->
+  <rect x="16" y="125" width="14" height="14" fill="#a6e3a1" opacity="0.3" rx="2"/>
+  <path d="M19 128h3v3h-3zm5 0h3v3h-3zm0 5h3v3h-3z" fill="#a6e3a1"/>
+  <!-- Indicator for Extensions -->
+  <rect x="0" y="122" width="3" height="22" fill="#a6e3a1" rx="1.5"/>
+
+  <!-- Sidebar (Explorer / Extensions panel) -->
+  <rect x="48" y="38" width="200" height="442" fill="#181825" stroke="#313244" stroke-width="1"/>
+  <text x="64" y="62" fill="#cdd6f4" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">EXPLORER: JS-PROJECT</text>
+  
+  <!-- Folder & File Item -->
+  <text x="64" y="90" fill="#a6adc8" font-family="system-ui, sans-serif" font-size="12">📁 js-basics-tutorial</text>
+  <rect x="64" y="102" width="170" height="26" rx="4" fill="#313244" opacity="0.6"/>
+  <text x="80" y="119" fill="#f9e2af" font-family="monospace" font-size="12">JS</text>
+  <text x="102" y="119" fill="#89b4fa" font-family="monospace" font-size="12" font-weight="600">index.js</text>
+
+  <!-- Extension badge callout in sidebar -->
+  <rect x="58" y="150" width="180" height="110" rx="8" fill="#1e1e2e" stroke="#45475a" stroke-width="1"/>
+  <text x="70" y="172" fill="#a6e3a1" font-family="system-ui, sans-serif" font-size="12" font-weight="700">✓ Code Runner</text>
+  <text x="70" y="190" fill="#a6adc8" font-family="system-ui, sans-serif" font-size="10">Jun Han (v0.12.2)</text>
+  <text x="70" y="210" fill="#9399b2" font-family="system-ui, sans-serif" font-size="10">Run C, C++, Java, JS...</text>
+  <rect x="70" y="224" width="70" height="22" rx="4" fill="#89b4fa" opacity="0.2" stroke="#89b4fa" stroke-width="1"/>
+  <text x="82" y="239" fill="#89b4fa" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Enabled</text>
+
+  <!-- Editor Header Tabs -->
+  <rect x="248" y="38" width="552" height="34" fill="#181825" stroke="#313244" stroke-width="1"/>
+  <rect x="248" y="38" width="130" height="34" fill="#1e1e2e" stroke-top="#89b4fa" stroke-top-width="2"/>
+  <path d="M248 38h130" stroke="#89b4fa" stroke-width="2"/>
+  <text x="264" y="59" fill="#f9e2af" font-family="monospace" font-size="11">JS</text>
+  <text x="284" y="59" fill="#cdd6f4" font-family="monospace" font-size="12">index.js</text>
+
+  <!-- Run Button shortcut icon top right -->
+  <rect x="740" y="44" width="44" height="22" rx="4" fill="#a6e3a1" opacity="0.2" stroke="#a6e3a1" stroke-width="1"/>
+  <polygon points="752,50 762,55 752,60" fill="#a6e3a1"/>
+  <text x="766" y="59" fill="#a6e3a1" font-family="system-ui, sans-serif" font-size="10" font-weight="700">Run</text>
+
+  <!-- Code Editor Body -->
+  <rect x="248" y="72" width="552" height="228" fill="#1e1e2e"/>
+  
+  <!-- Line Numbers -->
+  <g fill="#585b70" font-family="monospace" font-size="12" text-anchor="end">
+    <text x="275" y="96">1</text>
+    <text x="275" y="118">2</text>
+    <text x="275" y="140">3</text>
+    <text x="275" y="162">4</text>
+    <text x="275" y="184">5</text>
+    <text x="275" y="206">6</text>
+    <text x="275" y="228">7</text>
+  </g>
+
+  <!-- Code Syntax -->
+  <g font-family="'JetBrains Mono', 'Fira Code', Consolas, monospace" font-size="12.5">
+    <text x="295" y="96">
+      <tspan fill="#6c7086">// 1. Write your JavaScript code</tspan>
+    </text>
+    <text x="295" y="118">
+      <tspan fill="#cba6f7" font-weight="600">const</tspan>
+      <tspan fill="#cdd6f4"> greeting = </tspan>
+      <tspan fill="#a6e3a1">"Hello, JavaScript World!"</tspan>
+      <tspan fill="#cdd6f4">;</tspan>
+    </text>
+    <text x="295" y="140">
+      <tspan fill="#cba6f7" font-weight="600">const</tspan>
+      <tspan fill="#cdd6f4"> tools = [</tspan>
+      <tspan fill="#a6e3a1">"VS Code"</tspan>
+      <tspan fill="#cdd6f4">, </tspan>
+      <tspan fill="#a6e3a1">"Code Runner"</tspan>
+      <tspan fill="#cdd6f4">, </tspan>
+      <tspan fill="#a6e3a1">"Node.js"</tspan>
+      <tspan fill="#cdd6f4">];</tspan>
+    </text>
+    <text x="295" y="162">
+      <tspan fill="#89b4fa">console</tspan><tspan fill="#cdd6f4">.</tspan><tspan fill="#89dceb">log</tspan><tspan fill="#cdd6f4">(greeting);</tspan>
+    </text>
+    <text x="295" y="184">
+      <tspan fill="#89b4fa">console</tspan><tspan fill="#cdd6f4">.</tspan><tspan fill="#89dceb">log</tspan><tspan fill="#cdd6f4">(</tspan><tspan fill="#a6e3a1">`Ready to learn with: ${tools.join(', ')}`</tspan><tspan fill="#cdd6f4">);</tspan>
+    </text>
+  </g>
+
+  <!-- Context Menu Simulation (Right-click preview) -->
+  <g filter="drop-shadow(0px 8px 24px rgba(0,0,0,0.5))">
+    <rect x="420" y="130" width="220" height="110" rx="8" fill="#181825" stroke="#45475a" stroke-width="1"/>
+    <rect x="424" y="136" width="212" height="26" rx="4" fill="#89b4fa" opacity="0.2"/>
+    <text x="438" y="153" fill="#89b4fa" font-family="system-ui, sans-serif" font-size="12" font-weight="600">▶ Run Code</text>
+    <text x="565" y="153" fill="#a6adc8" font-family="monospace" font-size="10">Ctrl+Alt+N</text>
+    <line x1="428" y1="168" x2="632" y2="168" stroke="#313244"/>
+    <text x="438" y="186" fill="#a6adc8" font-family="system-ui, sans-serif" font-size="12">Format Document</text>
+    <text x="560" y="186" fill="#6c7086" font-family="monospace" font-size="10">Shift+Alt+F</text>
+    <text x="438" y="212" fill="#a6adc8" font-family="system-ui, sans-serif" font-size="12">Copy / Paste</text>
+  </g>
+
+  <!-- Output / Terminal Panel (Bottom) -->
+  <rect x="248" y="300" width="552" height="180" fill="#11111b" stroke="#313244" stroke-width="1"/>
+  
+  <!-- Terminal Header -->
+  <rect x="248" y="300" width="552" height="28" fill="#181825"/>
+  <text x="268" y="318" fill="#89b4fa" font-family="system-ui, sans-serif" font-size="11" font-weight="700">OUTPUT</text>
+  <text x="325" y="318" fill="#6c7086" font-family="system-ui, sans-serif" font-size="11">TERMINAL</text>
+  <text x="395" y="318" fill="#6c7086" font-family="system-ui, sans-serif" font-size="11">DEBUG CONSOLE</text>
+  <text x="730" y="318" fill="#a6e3a1" font-family="monospace" font-size="11">[Running] node</text>
+
+  <!-- Terminal Output Text -->
+  <g font-family="'JetBrains Mono', 'Fira Code', Consolas, monospace" font-size="12">
+    <text x="268" y="348" fill="#a6adc8">[Running] node "d:\js-project\index.js"</text>
+    <text x="268" y="372" fill="#a6e3a1" font-weight="600">Hello, JavaScript World!</text>
+    <text x="268" y="396" fill="#f9e2af">Ready to learn with: VS Code, Code Runner, Node.js</text>
+    <text x="268" y="430" fill="#a6adc8">[Done] exited with code=0 in 0.082 seconds</text>
+  </g>
+</svg>

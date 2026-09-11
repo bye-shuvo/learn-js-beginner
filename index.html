@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master modern JavaScript from absolute scratch. Interactive beginner guide covering JS fundamentals, VS Code setup with Code Runner, variables, conditionals, loops, arrays, strings, objects, and hands-on practice.">
+  <title>JavaScript for Beginners — Interactive Zero-to-Hero Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Global Reading Progress Bar -->
+  <div class="progress-bar-container" aria-hidden="true">
+    <div class="progress-bar-fill" id="globalProgressBar"></div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="site-header" role="banner">
+    <div class="header-brand">
+      <button class="menu-toggle-btn" id="menuToggleBtn" aria-label="Toggle navigation menu">☰</button>
+      <span class="brand-badge">JS</span>
+      <div class="brand-text">JavaScript <span>Beginner Guide</span></div>
+    </div>
+
+    <div class="header-actions">
+      <span class="badge-tag badge-green">Node & Browser Ready</span>
+      <span class="badge-tag badge-yellow">ES6+ Modern</span>
+      <a href="#vscode-setup" class="btn-header-action" title="Jump to VS Code Setup">
+        <span>⚡ Quick Setup</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Backdrop for Mobile Sidebar -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- Main Container -->
+  <div class="layout-container">
+    
+    <!-- Sticky Sidebar Navigation -->
+    <aside class="sidebar" id="sidebarNav" role="navigation" aria-label="Course Navigation">
+      <div class="search-box-wrapper">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input type="text" id="topicSearchInput" class="search-input" placeholder="Filter topics or methods..." aria-label="Search topics">
+      </div>
+
+      <div>
+        <div class="nav-section-label">Curriculum</div>
+        <ul class="nav-links" id="navLinksList">
+          <li class="nav-item active"><a href="#intro"><span class="nav-num">01</span> Intro to JS</a></li>
+          <li class="nav-item"><a href="#vscode-setup"><span class="nav-num">02</span> VS Code Setup</a></li>
+          <li class="nav-item"><a href="#variables"><span class="nav-num">03</span> Variables & Scope</a></li>
+          <li class="nav-item"><a href="#conditionals"><span class="nav-num">04</span> Conditionals</a></li>
+          <li class="nav-item"><a href="#loops"><span class="nav-num">05</span> Loops & Iteration</a></li>
+          <li class="nav-item"><a href="#arrays"><span class="nav-num">06</span> Arrays & Methods</a></li>
+          <li class="nav-item"><a href="#strings"><span class="nav-num">07</span> Strings & Methods</a></li>
+          <li class="nav-item"><a href="#objects"><span class="nav-num">08</span> Objects & Keys</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-stats-card">
+        <div class="stats-header">
+          <span>Your Progress</span>
+          <span id="progressPercentageText">0%</span>
+        </div>
+        <div class="stats-bar" aria-hidden="true">
+          <div class="stats-bar-fill" id="sidebarProgressFill"></div>
+        </div>
+        <div style="color: var(--text-dim); font-size: 0.75rem;">
+          Run snippets in-browser or VS Code
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Stream -->
+    <main class="content-area" id="mainContent" role="main">
+
+      <!-- Hero Banner -->
+      <section class="hero-banner">
+        <div class="hero-meta">
+          <span class="badge-tag badge-yellow">Absolute Beginners</span>
+          <span class="badge-tag badge-purple">9 Comprehensive Modules</span>
+          <span class="badge-tag badge-green">Code Runner Ready</span>
+        </div>
+        <h1 class="hero-title">Learn Modern JavaScript from Scratch</h1>
+        <p class="hero-desc">
+          Welcome! JavaScript is the universal programming language of the modern web. Every single code snippet on this page is standalone, runnable directly in Node.js via <strong>VS Code's Code Runner</strong> or right inside this browser page.
+        </p>
+        <div class="hero-feature-pills">
+          <div class="feature-pill">🎯 <span>Interactive copy-to-clipboard</span></div>
+          <div class="feature-pill">▶ <span>Live virtual console runner</span></div>
+          <div class="feature-pill">💡 <span>Practice challenges per section</span></div>
+          <div class="feature-pill">⌨ <span>Ctrl + Alt + N ready</span></div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           SECTION 1: INTRO TO JAVASCRIPT
+           ========================================================================= -->
+      <section id="intro" class="guide-section" data-topic="intro history brendan eich ecmascript node engine">
+        <div class="section-header">
+          <div class="section-number-tag">Module 01</div>
+          <h2 class="section-title">Introduction to JavaScript</h2>
+          <p class="section-subtitle">What is JavaScript, how it was born, and why it powers everything today.</p>
+        </div>
+
+        <div class="content-block">
+          <div class="info-card">
+            <h3>What is JavaScript?</h3>
+            <p>
+              <strong>JavaScript (JS)</strong> is a high-level, lightweight, interpreted (or Just-In-Time compiled) programming language with first-class functions. While it became famous as the scripting language for dynamic web pages, modern JavaScript runs on servers (via <strong>Node.js</strong> and Deno), cloud functions, mobile apps (React Native), and desktop apps (Electron / VS Code itself).
+            </p>
+          </div>
+
+          <div class="card-grid-2">
+            <div class="feature-box">
+              <div class="feature-box-icon">🌐</div>
+              <h3 class="feature-box-title">In the Browser (Client-side)</h3>
+              <p class="feature-box-desc">
+                Interacts with HTML/CSS, responds to user clicks, animates UI elements, fetches data from APIs without reloading the page, and manages client state.
+              </p>
+            </div>
+            <div class="feature-box">
+              <div class="feature-box-icon">🟢</div>
+              <h3 class="feature-box-title">In Node.js (Server-side)</h3>
+              <p class="feature-box-desc">
+                Executes directly on your computer or server using Google Chrome's high-speed <strong>V8 Engine</strong>. Reads files, talks to databases, builds REST APIs, and runs command-line tools.
+              </p>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 2rem; margin-bottom: 0.75rem;">A Quick History Timeline</h3>
+          <div class="timeline-track">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">1995</div>
+              <div class="timeline-content">
+                <h4>Created in 10 Days by Brendan Eich</h4>
+                <p>Brendan Eich engineered "Mocha" (later renamed LiveScript, then JavaScript) at Netscape Communications to bring web pages alive.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot yellow"></div>
+              <div class="timeline-year">1997 — 2015</div>
+              <div class="timeline-content">
+                <h4>Standardization under ECMAScript (ES6 Revolution)</h4>
+                <p>To avoid browser fragmentation, JS was standardized as <strong>ECMAScript</strong> (ES). In 2015, <strong>ES6 (ECMAScript 2015)</strong> modernized the language with `let`, `const`, arrow functions, template literals, and classes.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot green"></div>
+              <div class="timeline-year">2009 — Present</div>
+              <div class="timeline-content">
+                <h4>Ryan Dahl creates Node.js & Universal JS</h4>
+                <p>Node.js brought the V8 JS engine outside the browser, transforming JavaScript into one of the world's most versatile, widely used full-stack languages.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout-box callout-tip">
+            <span class="callout-icon">💡</span>
+            <div class="callout-body">
+              <strong>Why Learn JavaScript?</strong>
+              JavaScript is the only language that runs natively in every web browser without plugins. Learning it unlocks frontend, backend, mobile apps, and machine learning all in a single syntax!
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           SECTION 2: VS CODE SETUP & CODE RUNNER
+           ========================================================================= -->
+      <section id="vscode-setup" class="guide-section" data-topic="vs code setup code runner install extension index.js run terminal">
+        <div class="section-header">
+          <div class="section-number-tag">Module 02</div>
+          <h2 class="section-title">VS Code Setup & Running Code</h2>
+          <p class="section-subtitle">Get your professional local development environment ready in under 3 minutes.</p>
+        </div>
+
+        <div class="content-block">
+          <p>
+            To write and execute JavaScript like a professional developer on your local computer, we use <strong>Visual Studio Code (VS Code)</strong> with the popular <strong>Code Runner</strong> extension.
+          </p>
+
+          <div class="setup-steps-list">
+            <!-- Step 1 -->
+            <div class="setup-step-item">
+              <div class="step-num-badge">1</div>
+              <div class="step-body">
+                <h4>Download and Install VS Code</h4>
+                <p>Head to the official website and download the free installer for your operating system (Windows, macOS, or Linux):</p>
+                <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer" class="btn-header-action" style="display:inline-flex; width: fit-content; background: rgba(59, 130, 246, 0.2); border-color: var(--accent-blue);">
+                  🔗 Download Visual Studio Code (code.visualstudio.com)
+                </a>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="setup-step-item">
+              <div class="step-num-badge">2</div>
+              <div class="step-body">
+                <h4>Install the "Code Runner" Extension</h4>
+                <p>Open VS Code, press <span class="shortcut-kbd">Ctrl+Shift+X</span> (or <span class="shortcut-kbd">Cmd+Shift+X</span> on Mac) to open the Extensions tab. Search for <strong>Code Runner</strong> by Jun Han and click <strong>Install</strong>.</p>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="setup-step-item">
+              <div class="step-num-badge">3</div>
+              <div class="step-body">
+                <h4>Create Your First JavaScript File</h4>
+                <p>Create an empty folder on your computer (e.g. <code>my-js-practice</code>), open it in VS Code (<span class="shortcut-kbd">File → Open Folder</span>), and create a new file named <code>index.js</code>.</p>
+              </div>
+            </div>
+
+            <!-- Step 4 & 5 -->
+            <div class="setup-step-item">
+              <div class="step-num-badge">4</div>
+              <div class="step-body">
+                <h4>Run Code & View Output</h4>
+                <p>Paste some JavaScript into <code>index.js</code>, save it (<span class="shortcut-kbd">Ctrl+S</span>), then run it by either:</p>
+                <ul style="margin: 0.5rem 0 0.5rem 1.25rem;">
+                  <li>Pressing <span class="shortcut-kbd">Ctrl+Alt+N</span> (or <span class="shortcut-kbd">Cmd+Option+N</span> on Mac)</li>
+                  <li>Right-clicking anywhere in the editor and selecting <strong>"Run Code"</strong></li>
+                  <li>Clicking the <span class="shortcut-kbd">▶ Run</span> play button icon at the top right of the editor.</li>
+                </ul>
+                <p>The execution output will instantly appear in the bottom <strong>OUTPUT</strong> panel!</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- VS Code Visual Illustration -->
+          <div class="vscode-illustration-wrapper">
+            <img src="assets/vscode-preview.svg" alt="Visual Studio Code with Code Runner extension, index.js editor, and terminal output panel" loading="lazy">
+          </div>
+
+          <!-- Interactive Starter Snippet -->
+          <div class="code-card" data-snippet-id="starter-snippet">
+            <div class="code-header">
+              <div class="code-file-tag">
+                <span class="dot-indicator"></span>
+                <span>index.js (Starter Test Script)</span>
+              </div>
+              <div class="code-actions">
+                <button class="btn-code-action btn-copy-code" title="Copy code to clipboard">📋 Copy Code</button>
+                <button class="btn-code-action btn-run-code" title="Run code in browser virtual terminal">▶ Run in Browser</button>
+              </div>
+            </div>
+            <div class="code-body-wrapper">
+              <pre><code><span class="com">// Welcome to JavaScript! Test this in VS Code or run it right here:</span>
+<span class="kwd">const</span> student = <span class="str">"Future Developer"</span>;
+<span class="kwd">const</span> tools = [<span class="str">"VS Code"</span>, <span class="str">"Code Runner"</span>, <span class="str">"Node.js"</span>];
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"=============================="</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Hello, ${student}!`</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Your toolkit is ready: ${tools.join(" + ")}`</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Happy Coding!"</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"=============================="</span>);</code></pre>
+            </div>
+            <div class="terminal-output-container">
+              <div class="terminal-header">
+                <div class="terminal-title">💻 Virtual Output Panel (Node.js Simulated)</div>
+                <div class="terminal-actions">
+                  <button class="terminal-clear-btn">Clear</button>
+                </div>
+              </div>
+              <div class="terminal-console-logs">
+                <div class="log-line"><span class="log-prompt">&gt;</span> <span class="log-value" style="color:var(--text-dim);">Click '▶ Run in Browser' or copy to VS Code and press Ctrl+Alt+N</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           SECTION 3: VARIABLES & SCOPING
+           ========================================================================= -->
+      <section id="variables" class="guide-section" data-topic="variables var let const scope global function block hoisting tdz">
+        <div class="section-header">
+          <div class="section-number-tag">Module 03</div>
+          <h2 class="section-title">Variables & Scoping</h2>
+          <p class="section-subtitle">Storing data with <code>var</code>, <code>let</code>, and <code>const</code>, understanding scope boundaries, and hoisting.</p>
+        </div>
+
+        <div class="content-block">
+          <p>
+            Variables are containers for storing data values. In modern JavaScript, we have three keywords to declare variables: <code>var</code>, <code>let</code>, and <code>const</code>.
+          </p>
+
+          <!-- Comparison Table -->
+          <div class="table-wrapper">
+            <table class="custom-table" aria-label="Comparison between var, let, and const">
+              <thead>
+                <tr>
+                  <th>Keyword</th>
+                  <th>Scope</th>
+                  <th>Re-assignable?</th>
+                  <th>Re-declarable?</th>
+                  <th>Hoisted?</th>
+                  <th>Best Practice Recommendation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>const</code></td>
+                  <td>Block <code>{ }</code></td>
+                  <td><span class="status-cross">✖ No</span></td>
+                  <td><span class="status-cross">✖ No</span></td>
+                  <td>Yes (TDZ - Temporal Dead Zone)</td>
+                  <td><strong style="color:var(--accent-green);">Default choice</strong> for all values that won't be reassigned.</td>
+                </tr>
+                <tr>
+                  <td><code>let</code></td>
+                  <td>Block <code>{ }</code></td>
+                  <td><span class="status-check">✔ Yes</span></td>
+                  <td><span class="status-cross">✖ No</span></td>
+                  <td>Yes (TDZ - Temporal Dead Zone)</td>
+                  <td>Use when you know the value will change (e.g., loop counters).</td>
+                </tr>
+                <tr>
+                  <td><code>var</code></td>
+                  <td>Function / Global</td>
+                  <td><span class="status-check">✔ Yes</span></td>
+                  <td><span class="status-check">✔ Yes</span></td>
+                  <td>Yes (Initialized as <code>undefined</code>)</td>
+                  <td><strong style="color:var(--accent-rose);">Avoid</strong> in modern code due to scope leaks and bugs.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 style="margin-top: 2rem; margin-bottom: 0.75rem;">Understanding Scope: Global, Function, and Block</h3>
+          <p>
+            Scope determines where variables can be accessed in your code:
+          </p>
+
+          <div class="card-grid-3">
+            <div class="feature-box">
+              <h4 style="color: var(--accent-cyan); margin-bottom: 0.35rem;">1. Global Scope</h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">Declared outside any function or block. Accessible from anywhere in your script.</p>
+            </div>
+            <div class="feature-box">
+              <h4 style="color: var(--accent-purple); margin-bottom: 0.35rem;">2. Function Scope</h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">Declared inside a <code>function</code>. Only accessible within that function body.</p>
+            </div>
+            <div class="feature-box">
+              <h4 style="color: var(--accent-green); margin-bottom: 0.35rem;">3. Block Scope</h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">Declared with <code>let</code> or <code>const</code> inside curly braces <code>{ }</code> (like an <code>if</code> or <code>for</code> block).</p>
+            </div>
+          </div>
+
+          <!-- Runnable Code Block for Variables & Scope -->
+          <div class="code-card" data-snippet-id="variables-snippet">
+            <div class="code-header">
+              <div class="code-file-tag">
+                <span class="dot-indicator"></span>
+                <span>variables-and-scope.js</span>
+              </div>
+              <div class="code-actions">
+                <button class="btn-code-action btn-copy-code">📋 Copy Code</button>
+                <button class="btn-code-action btn-run-code">▶ Run in Browser</button>
+              </div>
+            </div>
+            <div class="code-body-wrapper">
+              <pre><code><span class="com">// 1. GLOBAL SCOPE</span>
+<span class="kwd">const</span> globalAppTitle = <span class="str">"Weather Dashboard"</span>;
+
+<span class="kwd">function</span> <span class="fn">checkWeather</span>() {
+  <span class="com">// 2. FUNCTION SCOPE</span>
+  <span class="kwd">const</span> secretApiKey = <span class="str">"xyz-12345"</span>;
+  <span class="kwd">let</span> temperature = <span class="num">24</span>;
+
+  <span class="kwd">if</span> (temperature &gt; <span class="num">20</span>) {
+    <span class="com">// 3. BLOCK SCOPE (let & const are locked inside this if-block)</span>
+    <span class="kwd">const</span> advice = <span class="str">"Wear light clothes, it's pleasant!"</span>;
+    <span class="kwd">var</span> legacyVar = <span class="str">"var leaks outside this block!"</span>;
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Inside block:"</span>, advice);
+  }
+
+  <span class="com">// advice is NOT accessible here (ReferenceError if called)</span>
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Outside block (var leaked):"</span>, legacyVar);
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Inside function:"</span>, globalAppTitle, <span class="str">"- Temp:"</span>, temperature);
+}
+
+<span class="fn">checkWeather</span>();
+
+<span class="com">// 4. CONST REASSIGNMENT DEMO:</span>
+<span class="kwd">const</span> maxScore = <span class="num">100</span>;
+<span class="com">// maxScore = 150; // Uncommenting this will throw: TypeError: Assignment to constant variable</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Max Score Constant:"</span>, maxScore);</code></pre>
+            </div>
+            <div class="terminal-output-container">
+              <div class="terminal-header">
+                <div class="terminal-title">💻 Virtual Output Panel</div>
+                <div class="terminal-actions"><button class="terminal-clear-btn">Clear</button></div>
+              </div>
+              <div class="terminal-console-logs">
+                <div class="log-line"><span class="log-prompt">&gt;</span> <span class="log-value" style="color:var(--text-dim);">Click '▶ Run in Browser' to execute</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Brief Note on Hoisting -->
+          <div class="callout-box callout-warn">
+            <span class="callout-icon">⚠️</span>
+            <div class="callout-body">
+              <strong>What is Hoisting?</strong>
+              JavaScript's engine scans declarations before executing code. <code>var</code> declarations are hoisted to the top and initialized as <code>undefined</code>. In contrast, <code>let</code> and <code>const</code> are hoisted but <em>not</em> initialized—they reside in the <strong>Temporal Dead Zone (TDZ)</strong> until their line of code is reached. Accessing them before their declaration causes a <code>ReferenceError</code>, protecting you from subtle bugs!
+            </div>
+          </div>
+
+          <!-- Practice Challenge -->
+          <div class="practice-card">
+            <div class="practice-header">
+              <span class="practice-icon">🎯</span>
+              <h4 class="practice-title">Practice Challenge: Variables in VS Code</h4>
+            </div>
+            <div class="practice-body">
+              <p>Copy the code snippet above into your <code>index.js</code> file in VS Code and try these adjustments:</p>
+              <ul class="practice-tasks">
+                <li>Create a <code>const</code> variable holding your name and a <code>let</code> variable holding your age.</li>
+                <li>Increment your age by 1 (<code>age = age + 1</code>) and log it with <code>console.log()</code>.</li>
+                <li>Try reassigning your name constant (e.g. <code>name = "New Name"</code>), run with <span class="shortcut-kbd">Ctrl+Alt+N</span>, and observe the exact error in the terminal.</li>
+              </ul>
+              <div class="practice-hint">
+                <strong>Tip:</strong> Always prefer <code>const</code> by default. Only switch to <code>let</code> when you explicitly reassign the variable.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           SECTION 4: CONDITIONALS
+           ========================================================================= -->
+      <section id="conditionals" class="guide-section" data-topic="conditionals if else switch ternary operator boolean truthy falsy">
+        <div class="section-header">
+          <div class="section-number-tag">Module 04</div>
+          <h2 class="section-title">Conditionals & Decision Making</h2>
+          <p class="section-subtitle">Guiding code execution paths using <code>if/else</code>, <code>switch</code>, and the ternary operator.</p>
+        </div>
+
+        <div class="content-block">
+          <p>
+            Conditionals let your program make decisions based on whether an expression evaluates to <code>true</code> or <code>false</code>.
+          </p>
+
+          <div class="card-grid-3">
+            <div class="feature-box">
+              <h4 style="color: var(--accent-blue); margin-bottom: 0.35rem;"><code>if / else if / else</code></h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">Standard branching for evaluating multiple comparison expressions sequentially.</p>
+            </div>
+            <div class="feature-box">
+              <h4 style="color: var(--accent-purple); margin-bottom: 0.35rem;"><code>switch</code> Statement</h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">Clean matching when comparing a single variable against many discrete fixed values.</p>
+            </div>
+            <div class="feature-box">
+              <h4 style="color: var(--accent-amber); margin-bottom: 0.35rem;">Ternary Operator <code>? :</code></h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">A compact, one-line shorthand for simple <code>if/else</code> assignments.</p>
+            </div>
+          </div>
+
+          <!-- Runnable Code Block for Conditionals -->
+          <div class="code-card" data-snippet-id="conditionals-snippet">
+            <div class="code-header">
+              <div class="code-file-tag">
+                <span class="dot-indicator"></span>
+                <span>conditionals-demo.js</span>
+              </div>
+              <div class="code-actions">
+                <button class="btn-code-action btn-copy-code">📋 Copy Code</button>
+                <button class="btn-code-action btn-run-code">▶ Run in Browser</button>
+              </div>
+            </div>
+            <div class="code-body-wrapper">
+              <pre><code><span class="com">// 1. IF / ELSE IF / ELSE</span>
+<span class="kwd">const</span> score = <span class="num">88</span>;
+
+<span class="kwd">if</span> (score &gt;= <span class="num">90</span>) {
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Grade: A (Outstanding! 🎉)"</span>);
+} <span class="kwd">else if</span> (score &gt;= <span class="num">80</span>) {
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Grade: B (Great job! 👍)"</span>);
+} <span class="kwd">else if</span> (score &gt;= <span class="num">70</span>) {
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Grade: C (Good effort)"</span>);
+} <span class="kwd">else</span> {
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Grade: F (Needs practice)"</span>);
+}
+
+<span class="com">// 2. SWITCH STATEMENT</span>
+<span class="kwd">const</span> userRole = <span class="str">"admin"</span>;
+
+<span class="kwd">switch</span> (userRole) {
+  <span class="kwd">case</span> <span class="str">"admin"</span>:
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Access Level: Full Admin Permissions"</span>);
+    <span class="kwd">break</span>; <span class="com">// Remember break to prevent fallthrough!</span>
+  <span class="kwd">case</span> <span class="str">"editor"</span>:
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Access Level: Edit & Publish Content"</span>);
+    <span class="kwd">break</span>;
+  <span class="kwd">case</span> <span class="str">"viewer"</span>:
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Access Level: Read-only"</span>);
+    <span class="kwd">break</span>;
+  <span class="kwd">default</span>:
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Access Level: Guest (Login Required)"</span>);
+}
+
+<span class="com">// 3. TERNARY OPERATOR (condition ? exprIfTrue : exprIfFalse)</span>
+<span class="kwd">const</span> age = <span class="num">19</span>;
+<span class="kwd">const</span> canVote = age &gt;= <span class="num">18</span> ? <span class="str">"Eligible to vote ✔"</span> : <span class="str">"Too young to vote ✖"</span>;
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Voter Status: ${canVote}`</span>);</code></pre>
+            </div>
+            <div class="terminal-output-container">
+              <div class="terminal-header">
+                <div class="terminal-title">💻 Virtual Output Panel</div>
+                <div class="terminal-actions"><button class="terminal-clear-btn">Clear</button></div>
+              </div>
+              <div class="terminal-console-logs">
+                <div class="log-line"><span class="log-prompt">&gt;</span> <span class="log-value" style="color:var(--text-dim);">Click '▶ Run in Browser' to execute</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Practice Challenge -->
+          <div class="practice-card">
+            <div class="practice-header">
+              <span class="practice-icon">🎯</span>
+              <h4 class="practice-title">Practice Challenge: Conditionals in VS Code</h4>
+            </div>
+            <div class="practice-body">
+              <p>Paste the snippet into VS Code and test these scenarios:</p>
+              <ul class="practice-tasks">
+                <li>Change <code>score = 65</code> and verify the output.</li>
+                <li>Change <code>userRole = "manager"</code> and observe how the <code>default</code> case triggers.</li>
+                <li>Write a ternary operator that checks if a number <code>const temp = 32;</code> is below freezing (<code>temp &lt;= 0</code>).</li>
+              </ul>
+              <div class="practice-hint">
+                <strong>Remember:</strong> Always include <code>break;</code> at the end of each <code>switch</code> case unless you intentionally want execution to continue into the next case.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           SECTION 5: LOOPS & ITERATION
+           ========================================================================= -->
+      <section id="loops" class="guide-section" data-topic="loops for while do while for of for in iteration break continue">
+        <div class="section-header">
+          <div class="section-number-tag">Module 05</div>
+          <h2 class="section-title">Loops & Iteration</h2>
+          <p class="section-subtitle">Automating repetitive tasks with <code>for</code>, <code>while</code>, <code>do...while</code>, <code>for...of</code>, and <code>for...in</code>.</p>
+        </div>
+
+        <div class="content-block">
+          <p>
+            Loops allow you to repeat a block of code multiple times until a specific condition is met.
+          </p>
+
+          <div class="card-grid-2">
+            <div class="feature-box">
+              <h4 style="color: var(--accent-cyan); margin-bottom: 0.35rem;"><code>for</code> Loop</h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">Standard loop with initializer, condition, and increment expression.</p>
+            </div>
+            <div class="feature-box">
+              <h4 style="color: var(--accent-blue); margin-bottom: 0.35rem;"><code>while</code> & <code>do...while</code></h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted);"><code>while</code> checks before running; <code>do...while</code> guarantees running at least once before checking.</p>
+            </div>
+            <div class="feature-box">
+              <h4 style="color: var(--accent-green); margin-bottom: 0.35rem;"><code>for...of</code> (Iterables / Arrays)</h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">Iterates directly through the <strong>values</strong> of an array, string, or set.</p>
+            </div>
+            <div class="feature-box">
+              <h4 style="color: var(--accent-amber); margin-bottom: 0.35rem;"><code>for...in</code> (Object Keys)</h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">Iterates through the <strong>keys / property names</strong> of an object.</p>
+            </div>
+          </div>
+
+          <!-- Runnable Code Block for Loops -->
+          <div class="code-card" data-snippet-id="loops-snippet">
+            <div class="code-header">
+              <div class="code-file-tag">
+                <span class="dot-indicator"></span>
+                <span>loops-mastery.js</span>
+              </div>
+              <div class="code-actions">
+                <button class="btn-code-action btn-copy-code">📋 Copy Code</button>
+                <button class="btn-code-action btn-run-code">▶ Run in Browser</button>
+              </div>
+            </div>
+            <div class="code-body-wrapper">
+              <pre><code><span class="com">// 1. CLASSIC FOR LOOP (0 to 3)</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"--- Classic for Loop ---"</span>);
+<span class="kwd">for</span> (<span class="kwd">let</span> i = <span class="num">1</span>; i &lt;= <span class="num">3</span>; i++) {
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Lap #${i}`</span>);
+}
+
+<span class="com">// 2. WHILE LOOP</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"--- While Loop ---"</span>);
+<span class="kwd">let</span> count = <span class="num">3</span>;
+<span class="kwd">while</span> (count &gt; <span class="num">0</span>) {
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Countdown: ${count}`</span>);
+  count--;
+}
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Blast off! 🚀"</span>);
+
+<span class="com">// 3. DO...WHILE LOOP (Executes at least once)</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"--- Do-While Loop ---"</span>);
+<span class="kwd">let</span> attempts = <span class="num">0</span>;
+<span class="kwd">do</span> {
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Attempt performed: ${attempts + 1}`</span>);
+  attempts++;
+} <span class="kwd">while</span> (attempts &lt; <span class="num">1</span>);
+
+<span class="com">// 4. FOR...OF (Looping over Array Values)</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"--- for...of Loop (Arrays) ---"</span>);
+<span class="kwd">const</span> frameworks = [<span class="str">"React"</span>, <span class="str">"Vue"</span>, <span class="str">"Node"</span>];
+<span class="kwd">for</span> (<span class="kwd">const</span> name <span class="kwd">of</span> frameworks) {
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Framework: ${name}`</span>);
+}
+
+<span class="com">// 5. FOR...IN (Looping over Object Keys)</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"--- for...in Loop (Objects) ---"</span>);
+<span class="kwd">const</span> car = { brand: <span class="str">"Tesla"</span>, model: <span class="str">"Model 3"</span>, year: <span class="num">2024</span> };
+<span class="kwd">for</span> (<span class="kwd">const</span> key <span class="kwd">in</span> car) {
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`${key}: ${car[key]}`</span>);
+}</code></pre>
+            </div>
+            <div class="terminal-output-container">
+              <div class="terminal-header">
+                <div class="terminal-title">💻 Virtual Output Panel</div>
+                <div class="terminal-actions"><button class="terminal-clear-btn">Clear</button></div>
+              </div>
+              <div class="terminal-console-logs">
+                <div class="log-line"><span class="log-prompt">&gt;</span> <span class="log-value" style="color:var(--text-dim);">Click '▶ Run in Browser' to execute</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Practice Challenge -->
+          <div class="practice-card">
+            <div class="practice-header">
+              <span class="practice-icon">🎯</span>
+              <h4 class="practice-title">Practice Challenge: Loops in VS Code</h4>
+            </div>
+            <div class="practice-body">
+              <p>Copy the code into <code>index.js</code> and try these tests:</p>
+              <ul class="practice-tasks">
+                <li>Write a <code>for</code> loop that logs only <strong>even numbers</strong> between 2 and 10.</li>
+                <li>Add a <code>break</code> statement inside the for loop to stop as soon as it reaches 6.</li>
+                <li>Create an array of your favorite 3 foods and loop over them using a <code>for...of</code> loop.</li>
+              </ul>
+              <div class="practice-hint">
+                <strong>Safety Tip:</strong> Inside a <code>while</code> loop, always ensure your counter variable updates (e.g. <code>count--</code> or <code>count++</code>) so you don't create an accidental infinite loop!
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           SECTION 6: ARRAYS & ARRAY METHODS
+           ========================================================================= -->
+      <section id="arrays" class="guide-section" data-topic="arrays push pop shift unshift foreach map filter find reduce includes slice splice methods">
+        <div class="section-header">
+          <div class="section-number-tag">Module 06</div>
+          <h2 class="section-title">Arrays & Array Methods</h2>
+          <p class="section-subtitle">Working with ordered lists, zero-based indexing, and the 12 essential array methods.</p>
+        </div>
+
+        <div class="content-block">
+          <p>
+            An <strong>Array</strong> is an ordered, zero-indexed list of values. JavaScript provides powerful built-in methods to manipulate, filter, and transform array data.
+          </p>
+
+          <!-- Array Basics Code Block -->
+          <div class="code-card" data-snippet-id="array-basics-snippet">
+            <div class="code-header">
+              <div class="code-file-tag">
+                <span class="dot-indicator"></span>
+                <span>array-basics.js</span>
+              </div>
+              <div class="code-actions">
+                <button class="btn-code-action btn-copy-code">📋 Copy Code</button>
+                <button class="btn-code-action btn-run-code">▶ Run in Browser</button>
+              </div>
+            </div>
+            <div class="code-body-wrapper">
+              <pre><code><span class="com">// Array Creation & Indexing (Zero-based: 0, 1, 2...)</span>
+<span class="kwd">const</span> fruits = [<span class="str">"Apple"</span>, <span class="str">"Banana"</span>, <span class="str">"Cherry"</span>];
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"First item (index 0):"</span>, fruits[<span class="num">0</span>]);      <span class="com">// Apple</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Second item (index 1):"</span>, fruits[<span class="num">1</span>]);     <span class="com">// Banana</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Total items (.length):"</span>, fruits.<span class="prop">length</span>); <span class="com">// 3</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Last item:"</span>, fruits[fruits.<span class="prop">length</span> - <span class="num">1</span>]);   <span class="com">// Cherry</span></code></pre>
+            </div>
+            <div class="terminal-output-container">
+              <div class="terminal-header">
+                <div class="terminal-title">💻 Virtual Output Panel</div>
+                <div class="terminal-actions"><button class="terminal-clear-btn">Clear</button></div>
+              </div>
+              <div class="terminal-console-logs">
+                <div class="log-line"><span class="log-prompt">&gt;</span> <span class="log-value" style="color:var(--text-dim);">Click '▶ Run in Browser' to execute</span></div>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 2rem; margin-bottom: 1rem;">12 Essential Array Methods (with Copyable Standalone Examples)</h3>
+
+          <!-- Master All-in-One Arrays Snippet -->
+          <div class="code-card" data-snippet-id="all-array-methods-snippet">
+            <div class="code-header">
+              <div class="code-file-tag">
+                <span class="dot-indicator"></span>
+                <span>all-array-methods-complete.js</span>
+              </div>
+              <div class="code-actions">
+                <button class="btn-code-action btn-copy-code">📋 Copy Code</button>
+                <button class="btn-code-action btn-run-code">▶ Run in Browser</button>
+              </div>
+            </div>
+            <div class="code-body-wrapper">
+              <pre><code><span class="com">// ========================================================</span>
+<span class="com">// 1. push() — Adds item to the END of array</span>
+<span class="com">// ========================================================</span>
+<span class="kwd">const</span> cart1 = [<span class="str">"Laptop"</span>, <span class="str">"Mouse"</span>];
+cart1.<span class="fn">push</span>(<span class="str">"Keyboard"</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"1. push output:"</span>, cart1); 
+<span class="com">// Output: [ 'Laptop', 'Mouse', 'Keyboard' ]</span>
+
+<span class="com">// ========================================================</span>
+<span class="com">// 2. pop() — Removes and returns the LAST item</span>
+<span class="com">// ========================================================</span>
+<span class="kwd">const</span> cart2 = [<span class="str">"Laptop"</span>, <span class="str">"Mouse"</span>, <span class="str">"Keyboard"</span>];
+<span class="kwd">const</span> removedLast = cart2.<span class="fn">pop</span>();
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"2. pop output:"</span>, cart2, <span class="str">"| Removed:"</span>, removedLast);
+<span class="com">// Output: [ 'Laptop', 'Mouse' ] | Removed: Keyboard</span>
+
+<span class="com">// ========================================================</span>
+<span class="com">// 3. shift() — Removes and returns the FIRST item</span>
+<span class="com">// ========================================================</span>
+<span class="kwd">const</span> queue1 = [<span class="str">"First"</span>, <span class="str">"Second"</span>, <span class="str">"Third"</span>];
+<span class="kwd">const</span> served = queue1.<span class="fn">shift</span>();
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"3. shift output:"</span>, queue1, <span class="str">"| Served:"</span>, served);
+<span class="com">// Output: [ 'Second', 'Third' ] | Served: First</span>
+
+<span class="com">// ========================================================</span>
+<span class="com">// 4. unshift() — Adds item to the BEGINNING of array</span>
+<span class="com">// ========================================================</span>
+<span class="kwd">const</span> queue2 = [<span class="str">"Second"</span>, <span class="str">"Third"</span>];
+queue2.<span class="fn">unshift</span>(<span class="str">"VIP-First"</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"4. unshift output:"</span>, queue2);
+<span class="com">// Output: [ 'VIP-First', 'Second', 'Third' ]</span>
+
+<span class="com">// ========================================================</span>
+<span class="com">// 5. forEach() — Runs a function on each element</span>
+<span class="com">// ========================================================</span>
+<span class="kwd">const</span> colors = [<span class="str">"Red"</span>, <span class="str">"Green"</span>, <span class="str">"Blue"</span>];
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"5. forEach output:"</span>);
+colors.<span class="fn">forEach</span>((color, index) =&gt; {
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`   Color #${index + 1}: ${color}`</span>);
+});
+<span class="com">// Output: Color #1: Red, Color #2: Green, Color #3: Blue</span>
+
+<span class="com">// ========================================================</span>
+<span class="com">// 6. map() — Creates a NEW array by transforming each item</span>
+<span class="com">// ========================================================</span>
+<span class="kwd">const</span> pricesUSD = [<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>];
+<span class="kwd">const</span> withTax = pricesUSD.<span class="fn">map</span>(price =&gt; price * <span class="num">1.1</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"6. map output:"</span>, withTax);
+<span class="com">// Output: [ 11, 22, 33 ]</span>
+
+<span class="com">// ========================================================</span>
+<span class="com">// 7. filter() — Creates a NEW array with items matching a condition</span>
+<span class="com">// ========================================================</span>
+<span class="kwd">const</span> ages = [<span class="num">12</span>, <span class="num">18</span>, <span class="num">25</span>, <span class="num">8</span>, <span class="num">30</span>];
+<span class="kwd">const</span> adults = ages.<span class="fn">filter</span>(age =&gt; age &gt;= <span class="num">18</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"7. filter output:"</span>, adults);
+<span class="com">// Output: [ 18, 25, 30 ]</span>
+
+<span class="com">// ========================================================</span>
+<span class="com">// 8. find() — Returns the FIRST element matching condition</span>
+<span class="com">// ========================================================</span>
+<span class="kwd">const</span> users = [
+  { id: <span class="num">1</span>, name: <span class="str">"Alice"</span> },
+  { id: <span class="num">2</span>, name: <span class="str">"Bob"</span> },
+  { id: <span class="num">3</span>, name: <span class="str">"Charlie"</span> }
+];
+<span class="kwd">const</span> foundUser = users.<span class="fn">find</span>(u =&gt; u.<span class="prop">id</span> === <span class="num">2</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"8. find output:"</span>, foundUser);
+<span class="com">// Output: { id: 2, name: 'Bob' }</span>
+
+<span class="com">// ========================================================</span>
+<span class="com">// 9. reduce() — Condenses array into a single accumulated value</span>
+<span class="com">// ========================================================</span>
+<span class="kwd">const</span> expenses = [<span class="num">25</span>, <span class="num">50</span>, <span class="num">25</span>];
+<span class="kwd">const</span> totalSpent = expenses.<span class="fn">reduce</span>((accumulator, current) =&gt; accumulator + current, <span class="num">0</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"9. reduce output (Total):"</span>, totalSpent);
+<span class="com">// Output: 100</span>
+
+<span class="com">// ========================================================</span>
+<span class="com">// 10. includes() — Checks if array contains value (true/false)</span>
+<span class="com">// ========================================================</span>
+<span class="kwd">const</span> allowedRoles = [<span class="str">"admin"</span>, <span class="str">"editor"</span>];
+<span class="kwd">const</span> hasAdmin = allowedRoles.<span class="fn">includes</span>(<span class="str">"admin"</span>);
+<span class="kwd">const</span> hasGuest = allowedRoles.<span class="fn">includes</span>(<span class="str">"guest"</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"10. includes output:"</span>, <span class="str">"hasAdmin ="</span>, hasAdmin, <span class="str">"| hasGuest ="</span>, hasGuest);
+<span class="com">// Output: hasAdmin = true | hasGuest = false</span>
+
+<span class="com">// ========================================================</span>
+<span class="com">// 11. slice(start, end) — Non-destructive shallow copy of portion</span>
+<span class="com">// ========================================================</span>
+<span class="kwd">const</span> letters = [<span class="str">"A"</span>, <span class="str">"B"</span>, <span class="str">"C"</span>, <span class="str">"D"</span>, <span class="str">"E"</span>];
+<span class="kwd">const</span> slicedPart = letters.<span class="fn">slice</span>(<span class="num">1</span>, <span class="num">4</span>); <span class="com">// indices 1, 2, 3 (end is exclusive)</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"11. slice output:"</span>, slicedPart, <span class="str">"| Original unchanged:"</span>, letters);
+<span class="com">// Output: [ 'B', 'C', 'D' ] | Original unchanged: [ 'A', 'B', 'C', 'D', 'E' ]</span>
+
+<span class="com">// ========================================================</span>
+<span class="com">// 12. splice(start, deleteCount, ...itemsToAdd) — Mutates in-place</span>
+<span class="com">// ========================================================</span>
+<span class="kwd">const</span> playlist = [<span class="str">"Song 1"</span>, <span class="str">"Song 2"</span>, <span class="str">"Song 3"</span>];
+playlist.<span class="fn">splice</span>(<span class="num">1</span>, <span class="num">1</span>, <span class="str">"New Feature Song"</span>); <span class="com">// Replaces 1 item at index 1</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"12. splice output:"</span>, playlist);
+<span class="com">// Output: [ 'Song 1', 'New Feature Song', 'Song 3' ]</span></code></pre>
+            </div>
+            <div class="terminal-output-container">
+              <div class="terminal-header">
+                <div class="terminal-title">💻 Virtual Output Panel</div>
+                <div class="terminal-actions"><button class="terminal-clear-btn">Clear</button></div>
+              </div>
+              <div class="terminal-console-logs">
+                <div class="log-line"><span class="log-prompt">&gt;</span> <span class="log-value" style="color:var(--text-dim);">Click '▶ Run in Browser' to execute</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Practice Challenge -->
+          <div class="practice-card">
+            <div class="practice-header">
+              <span class="practice-icon">🎯</span>
+              <h4 class="practice-title">Practice Challenge: Array Methods in VS Code</h4>
+            </div>
+            <div class="practice-body">
+              <p>Copy the array methods into VS Code and complete this mini-project:</p>
+              <ul class="practice-tasks">
+                <li>Create an array of numbers: <code>const scores = [45, 82, 91, 60, 78, 99];</code></li>
+                <li>Use <code>.filter()</code> to select only scores above 75 (Passing grades).</li>
+                <li>Use <code>.map()</code> to add 5 bonus points to every score.</li>
+                <li>Use <code>.reduce()</code> to calculate the average score of the group.</li>
+              </ul>
+              <div class="practice-hint">
+                <strong>Golden Rule:</strong> Remember that <code>slice()</code> creates a safe copy without modifying the original array, while <code>splice()</code> modifies the original array directly.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           SECTION 7: STRINGS & STRING METHODS
+           ========================================================================= -->
+      <section id="strings" class="guide-section" data-topic="strings template literals length slice substring split trim toUpperCase toLowerCase includes replace concat">
+        <div class="section-header">
+          <div class="section-number-tag">Module 07</div>
+          <h2 class="section-title">Strings & String Methods</h2>
+          <p class="section-subtitle">Text manipulation, template literals <code>${}</code>, and 10 core string methods.</p>
+        </div>
+
+        <div class="content-block">
+          <p>
+            In JavaScript, text is stored as a <strong>String</strong>. Strings are immutable sequences of characters wrapped in single quotes (<code>'...'</code>), double quotes (<code>"..."</code>), or modern template literals (<code>`...`</code>).
+          </p>
+
+          <!-- Template Literals Card -->
+          <div class="info-card">
+            <h3>Why Template Literals (Backticks <code>` `</code>) Are Modern Best Practice</h3>
+            <p>
+              Template literals allow multiline strings and dynamic string interpolation using <code>${expression}</code> syntax without messy plus (<code>+</code>) concatenations.
+            </p>
+          </div>
+
+          <!-- Strings Complete Snippet -->
+          <div class="code-card" data-snippet-id="string-methods-complete-snippet">
+            <div class="code-header">
+              <div class="code-file-tag">
+                <span class="dot-indicator"></span>
+                <span>strings-and-methods.js</span>
+              </div>
+              <div class="code-actions">
+                <button class="btn-code-action btn-copy-code">📋 Copy Code</button>
+                <button class="btn-code-action btn-run-code">▶ Run in Browser</button>
+              </div>
+            </div>
+            <div class="code-body-wrapper">
+              <pre><code><span class="com">// 1. CREATION & TEMPLATE LITERALS</span>
+<span class="kwd">const</span> language = <span class="str">"JavaScript"</span>;
+<span class="kwd">const</span> year = <span class="num">1995</span>;
+<span class="kwd">const</span> message = <span class="str">`${language} was released in ${year} (over ${2025 - year} years ago!)`</span>;
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"1. Template Literal:"</span>, message);
+<span class="com">// Output: JavaScript was released in 1995 (over 30 years ago!)</span>
+
+<span class="com">// 2. length — Counts character count</span>
+<span class="kwd">const</span> password = <span class="str">"superSecret123"</span>;
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"2. length:"</span>, password.<span class="prop">length</span>); 
+<span class="com">// Output: 14</span>
+
+<span class="com">// 3. slice(start, end) — Extracts part of string</span>
+<span class="kwd">const</span> fullUrl = <span class="str">"https://example.com/blog"</span>;
+<span class="kwd">const</span> protocol = fullUrl.<span class="fn">slice</span>(<span class="num">0</span>, <span class="num">5</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"3. slice:"</span>, protocol); 
+<span class="com">// Output: https</span>
+
+<span class="com">// 4. substring(start, end) — Extracts between indices</span>
+<span class="kwd">const</span> text = <span class="str">"Developer"</span>;
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"4. substring:"</span>, text.<span class="fn">substring</span>(<span class="num">0</span>, <span class="num">3</span>)); 
+<span class="com">// Output: Dev</span>
+
+<span class="com">// 5. split(separator) — Splits string into Array</span>
+<span class="kwd">const</span> csvTags = <span class="str">"html,css,javascript,react"</span>;
+<span class="kwd">const</span> tagsArray = csvTags.<span class="fn">split</span>(<span class="str">","</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"5. split:"</span>, tagsArray); 
+<span class="com">// Output: [ 'html', 'css', 'javascript', 'react' ]</span>
+
+<span class="com">// 6. trim() — Removes leading and trailing whitespaces</span>
+<span class="kwd">const</span> rawInput = <span class="str">"   user_email@test.com   "</span>;
+<span class="kwd">const</span> cleanEmail = rawInput.<span class="fn">trim</span>();
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"6. trim:"</span>, <span class="str">`'${cleanEmail}'`</span>); 
+<span class="com">// Output: 'user_email@test.com'</span>
+
+<span class="com">// 7. toUpperCase() & toLowerCase() — Case conversion</span>
+<span class="kwd">const</span> greeting = <span class="str">"Hello World"</span>;
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"7. Upper:"</span>, greeting.<span class="fn">toUpperCase</span>(), <span class="str">"| Lower:"</span>, greeting.<span class="fn">toLowerCase</span>());
+<span class="com">// Output: Upper: HELLO WORLD | Lower: hello world</span>
+
+<span class="com">// 8. includes(substring) — Checks if text is found (true/false)</span>
+<span class="kwd">const</span> emailCheck = <span class="str">"alex@company.org"</span>;
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"8. includes '@':"</span>, emailCheck.<span class="fn">includes</span>(<span class="str">"@"</span>)); 
+<span class="com">// Output: true</span>
+
+<span class="com">// 9. replace() & replaceAll() — Swaps search match with replacement</span>
+<span class="kwd">const</span> oldPhrase = <span class="str">"I like coffee. Good coffee!"</span>;
+<span class="kwd">const</span> newPhrase = oldPhrase.<span class="fn">replace</span>(<span class="str">"coffee"</span>, <span class="str">"tea"</span>); <span class="com">// replaces first match</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"9. replace:"</span>, newPhrase);
+<span class="com">// Output: I like tea. Good coffee!</span>
+
+<span class="com">// 10. concat() — Joins two or more strings together</span>
+<span class="kwd">const</span> strA = <span class="str">"Frontend "</span>;
+<span class="kwd">const</span> strB = <span class="str">"Developer"</span>;
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"10. concat:"</span>, strA.<span class="fn">concat</span>(strB));
+<span class="com">// Output: Frontend Developer</span></code></pre>
+            </div>
+            <div class="terminal-output-container">
+              <div class="terminal-header">
+                <div class="terminal-title">💻 Virtual Output Panel</div>
+                <div class="terminal-actions"><button class="terminal-clear-btn">Clear</button></div>
+              </div>
+              <div class="terminal-console-logs">
+                <div class="log-line"><span class="log-prompt">&gt;</span> <span class="log-value" style="color:var(--text-dim);">Click '▶ Run in Browser' to execute</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Practice Challenge -->
+          <div class="practice-card">
+            <div class="practice-header">
+              <span class="practice-icon">🎯</span>
+              <h4 class="practice-title">Practice Challenge: Strings in VS Code</h4>
+            </div>
+            <div class="practice-body">
+              <p>Try these exercises in your <code>index.js</code> file:</p>
+              <ul class="practice-tasks">
+                <li>Take a user input string: <code>const userInput = "  John.DOE@example.COM  ";</code></li>
+                <li>Clean it by trimming whitespace and converting it entirely to lower-case.</li>
+                <li>Use <code>.split("@")</code> to separate the username from the domain.</li>
+                <li>Format the output into a friendly message using template literals: <code>`User: ${user}, Domain: ${domain}`</code>.</li>
+              </ul>
+              <div class="practice-hint">
+                <strong>Remember:</strong> Strings in JavaScript are immutable. Methods like <code>.toUpperCase()</code> or <code>.trim()</code> do not alter the original string—they return a fresh new string!
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           SECTION 8: OBJECTS & METHODS
+           ========================================================================= -->
+      <section id="objects" class="guide-section" data-topic="objects properties dot notation bracket notation methods this Object.keys Object.values Object.entries">
+        <div class="section-header">
+          <div class="section-number-tag">Module 08</div>
+          <h2 class="section-title">Objects & Object Methods</h2>
+          <p class="section-subtitle">Structuring complex data with key-value pairs, nested objects, functions inside objects, and utility methods.</p>
+        </div>
+
+        <div class="content-block">
+          <p>
+            An <strong>Object</strong> is a collection of related properties and methods stored as key-value pairs. Objects are the backbone of JavaScript data structures.
+          </p>
+
+          <div class="card-grid-2">
+            <div class="feature-box">
+              <h4 style="color: var(--accent-cyan); margin-bottom: 0.35rem;">Dot Notation (<code>user.name</code>)</h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">Standard, clean, and fast when you know the exact property key name beforehand.</p>
+            </div>
+            <div class="feature-box">
+              <h4 style="color: var(--accent-amber); margin-bottom: 0.35rem;">Bracket Notation (<code>user["name"]</code>)</h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">Mandatory when accessing properties dynamically via variables or keys with special characters/spaces.</p>
+            </div>
+          </div>
+
+          <!-- Objects Complete Runnable Snippet -->
+          <div class="code-card" data-snippet-id="objects-complete-snippet">
+            <div class="code-header">
+              <div class="code-file-tag">
+                <span class="dot-indicator"></span>
+                <span>objects-deepdive.js</span>
+              </div>
+              <div class="code-actions">
+                <button class="btn-code-action btn-copy-code">📋 Copy Code</button>
+                <button class="btn-code-action btn-run-code">▶ Run in Browser</button>
+              </div>
+            </div>
+            <div class="code-body-wrapper">
+              <pre><code><span class="com">// 1. OBJECT CREATION & PROPERTIES</span>
+<span class="kwd">const</span> developer = {
+  firstName: <span class="str">"Sarah"</span>,
+  lastName: <span class="str">"Connor"</span>,
+  age: <span class="num">28</span>,
+  isEmployed: <span class="bool">true</span>,
+  skills: [<span class="str">"JavaScript"</span>, <span class="str">"HTML"</span>, <span class="str">"CSS"</span>],
+  
+  <span class="com">// Nested Object</span>
+  location: {
+    city: <span class="str">"San Francisco"</span>,
+    country: <span class="str">"USA"</span>
+  },
+
+  <span class="com">// Method inside Object ('this' refers to the developer object)</span>
+  <span class="fn">getFullName</span>() {
+    <span class="kwd">return</span> <span class="str">`${this.firstName} ${this.lastName}`</span>;
+  },
+
+  <span class="fn">greet</span>() {
+    <span class="kwd">return</span> <span class="str">`Hi, I'm ${this.firstName} from ${this.location.city}!`</span>;
+  }
+};
+
+<span class="com">// 2. ACCESSING PROPERTIES</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Dot notation:"</span>, developer.<span class="prop">firstName</span>);             <span class="com">// Sarah</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Bracket notation:"</span>, developer[<span class="str">"age"</span>]);              <span class="com">// 28</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Nested property:"</span>, developer.<span class="prop">location</span>.<span class="prop">city</span>);      <span class="com">// San Francisco</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Calling method:"</span>, developer.<span class="fn">getFullName</span>());       <span class="com">// Sarah Connor</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Calling greet:"</span>, developer.<span class="fn">greet</span>());               <span class="com">// Hi, I'm Sarah from San Francisco!</span>
+
+<span class="com">// 3. OBJECT UTILITY METHODS (Keys, Values, Entries)</span>
+<span class="kwd">const</span> book = {
+  title: <span class="str">"Eloquent JavaScript"</span>,
+  author: <span class="str">"Marijn Haverbeke"</span>,
+  pages: <span class="num">472</span>
+};
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"--- Object Utilities ---"</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Object.keys():"</span>, Object.<span class="fn">keys</span>(book));
+<span class="com">// Output: [ 'title', 'author', 'pages' ]</span>
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Object.values():"</span>, Object.<span class="fn">values</span>(book));
+<span class="com">// Output: [ 'Eloquent JavaScript', 'Marijn Haverbeke', 472 ]</span>
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Object.entries():"</span>, Object.<span class="fn">entries</span>(book));
+<span class="com">// Output: [ [ 'title', 'Eloquent JavaScript' ], [ 'author', 'Marijn Haverbeke' ], [ 'pages', 472 ] ]</span></code></pre>
+            </div>
+            <div class="terminal-output-container">
+              <div class="terminal-header">
+                <div class="terminal-title">💻 Virtual Output Panel</div>
+                <div class="terminal-actions"><button class="terminal-clear-btn">Clear</button></div>
+              </div>
+              <div class="terminal-console-logs">
+                <div class="log-line"><span class="log-prompt">&gt;</span> <span class="log-value" style="color:var(--text-dim);">Click '▶ Run in Browser' to execute</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Practice Challenge -->
+          <div class="practice-card">
+            <div class="practice-header">
+              <span class="practice-icon">🎯</span>
+              <h4 class="practice-title">Practice Challenge: Objects in VS Code</h4>
+            </div>
+            <div class="practice-body">
+              <p>Copy the code snippet into VS Code and try these tasks:</p>
+              <ul class="practice-tasks">
+                <li>Add a new property <code>githubHandle: "@sarahc"</code> to the <code>developer</code> object.</li>
+                <li>Add a new method <code>haveBirthday()</code> that increments <code>this.age</code> by 1 and returns the new age.</li>
+                <li>Use <code>Object.entries()</code> in a <code>for...of</code> loop to print every key and value in format: <code>"key -> value"</code>.</li>
+              </ul>
+              <div class="practice-hint">
+                <strong>Pro-tip:</strong> In object methods, standard function syntax (e.g. <code>greet() { ... }</code>) automatically binds <code>this</code> to the owning object, making it clean and intuitive.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Reference Summary / Cheat Sheet Card -->
+      <section class="guide-section" style="margin-top: 3rem;">
+        <div class="info-card" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.08)); border-color: var(--border-accent);">
+          <h3 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+            <span>🚀</span> Next Steps on Your JavaScript Journey
+          </h3>
+          <p>
+            You have now covered all the core building blocks of JavaScript: <strong>Variables & Scoping</strong>, <strong>Conditionals</strong>, <strong>Loops</strong>, <strong>Arrays</strong>, <strong>Strings</strong>, and <strong>Objects</strong>!
+          </p>
+          <p>
+            Keep practicing daily inside VS Code using <strong>Code Runner</strong> (<span class="shortcut-kbd">Ctrl+Alt+N</span>). Try modifying values, writing your own functions, and testing new scenarios.
+          </p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="brand-badge" style="display:inline-block;">JS</div>
+      <p class="footer-quote">
+        "Programs must be written for people to read, and only incidentally for machines to execute." — Harold Abelson
+      </p>
+      <p>© 2025 JavaScript Beginner Session. Built with semantic HTML5, modern CSS3 & Vanilla JavaScript.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
