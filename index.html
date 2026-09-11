@@ -220,8 +220,45 @@
             <div class="setup-step-item">
               <div class="step-num-badge">2</div>
               <div class="step-body">
-                <h4>Install the "Code Runner" Extension</h4>
-                <p>Open VS Code, press <span class="shortcut-kbd">Ctrl+Shift+X</span> (or <span class="shortcut-kbd">Cmd+Shift+X</span> on Mac) to open the Extensions tab. Search for <strong>Code Runner</strong> by Jun Han and click <strong>Install</strong>.</p>
+                <h4>Install Node.js (JavaScript Runtime)</h4>
+                <p>
+                  <strong>Why it's required:</strong> VS Code's Code Runner extension executes your JavaScript files locally by passing them to <strong>Node.js</strong> in the background. Without Node.js installed, your local computer cannot execute standalone <code>.js</code> files outside a browser.
+                </p>
+                <p>Download the recommended <strong>LTS (Long Term Support)</strong> version from the official site:</p>
+                <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer" class="btn-header-action" style="display:inline-flex; width: fit-content; background: rgba(16, 185, 129, 0.2); border-color: var(--accent-green); margin-bottom: 0.75rem;">
+                  🟢 Download Node.js LTS (nodejs.org)
+                </a>
+                <p style="margin-top: 0.5rem;">
+                  <strong>Installation Steps:</strong> Run the downloaded installer (<code>.msi</code> on Windows or <code>.pkg</code> on macOS), keep all default settings selected, and click <em>Next → Next → Install → Finish</em>.
+                </p>
+                <p style="margin-top: 0.75rem;">
+                  <strong>Verify Installation:</strong> Open your Terminal or Command Prompt (or inside VS Code with <span class="shortcut-kbd">Ctrl+`</span>) and run:
+                </p>
+                <div class="code-card" style="margin: 0.75rem 0 1rem;">
+                  <div class="code-header">
+                    <div class="code-file-tag">
+                      <span class="dot-indicator"></span>
+                      <span>Terminal / Command Prompt</span>
+                    </div>
+                    <div class="code-actions">
+                      <button class="btn-code-action btn-copy-code" title="Copy verification commands">📋 Copy</button>
+                    </div>
+                  </div>
+                  <div class="code-body-wrapper" style="padding: 0.85rem 1.25rem;">
+                    <pre><code><span class="com"># Verify Node.js is installed</span>
+node -v
+
+<span class="com"># Verify npm (Node Package Manager) is installed</span>
+npm -v</code></pre>
+                  </div>
+                </div>
+                <div class="callout-box callout-tip" style="margin: 0.75rem 0 0.25rem; padding: 0.85rem 1rem;">
+                  <span class="callout-icon">💡</span>
+                  <div class="callout-body">
+                    <strong>Troubleshooting Note:</strong>
+                    If terminal says <em>'node' is not recognized as an internal or external command</em>, close and restart VS Code / your terminal (or restart your PC) so your operating system refreshes its PATH environment variables.
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -229,14 +266,23 @@
             <div class="setup-step-item">
               <div class="step-num-badge">3</div>
               <div class="step-body">
+                <h4>Install the "Code Runner" Extension</h4>
+                <p>Open VS Code, press <span class="shortcut-kbd">Ctrl+Shift+X</span> (or <span class="shortcut-kbd">Cmd+Shift+X</span> on Mac) to open the Extensions tab. Search for <strong>Code Runner</strong> by Jun Han and click <strong>Install</strong>.</p>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="setup-step-item">
+              <div class="step-num-badge">4</div>
+              <div class="step-body">
                 <h4>Create Your First JavaScript File</h4>
                 <p>Create an empty folder on your computer (e.g. <code>my-js-practice</code>), open it in VS Code (<span class="shortcut-kbd">File → Open Folder</span>), and create a new file named <code>index.js</code>.</p>
               </div>
             </div>
 
-            <!-- Step 4 & 5 -->
+            <!-- Step 5 -->
             <div class="setup-step-item">
-              <div class="step-num-badge">4</div>
+              <div class="step-num-badge">5</div>
               <div class="step-body">
                 <h4>Run Code & View Output</h4>
                 <p>Paste some JavaScript into <code>index.js</code>, save it (<span class="shortcut-kbd">Ctrl+S</span>), then run it by either:</p>
