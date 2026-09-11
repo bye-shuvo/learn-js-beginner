@@ -5,6 +5,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initThemeToggle();
   initNavigation();
   initProgressTracker();
   initCodeRunners();
@@ -369,4 +370,46 @@ function showToast(message, type = 'success') {
     toast.style.transition = 'opacity 0.25s, transform 0.25s';
     setTimeout(() => toast.remove(), 250);
   }, 3200);
+}
+
+/**
+ * 8. THEME TOGGLE (Dark / Light Mode & LocalStorage Persistence)
+ */
+function initThemeToggle() {
+  const toggleBtn = document.getElementById('themeToggleBtn');
+  if (!toggleBtn) return;
+
+  function getCurrentTheme() {
+    return document.documentElement.getAttribute('data-theme') || 'dark';
+  }
+
+  function updateThemeUI(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.body.classList.toggle('light-mode', theme === 'light');
+
+    const isDark = theme === 'dark';
+    const nextModeName = isDark ? 'light' : 'dark';
+    toggleBtn.setAttribute('aria-label', `Switch to ${nextModeName} mode`);
+    toggleBtn.setAttribute('title', `Switch to ${nextModeName} mode`);
+    toggleBtn.setAttribute('aria-pressed', (!isDark).toString());
+  }
+
+  function setTheme(theme) {
+    updateThemeUI(theme);
+    try {
+      localStorage.setItem('theme', theme);
+    } catch (e) {
+      console.warn('Unable to save theme in localStorage', e);
+    }
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    const currentTheme = getCurrentTheme();
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+  });
+
+  // Sync initial state with active data-theme attribute
+  const initialTheme = getCurrentTheme();
+  updateThemeUI(initialTheme);
 }
