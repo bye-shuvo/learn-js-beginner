@@ -69,11 +69,14 @@
           <li class="nav-item active"><a href="#intro"><span class="nav-num">01</span> Intro to JS</a></li>
           <li class="nav-item"><a href="#vscode-setup"><span class="nav-num">02</span> VS Code Setup</a></li>
           <li class="nav-item"><a href="#variables"><span class="nav-num">03</span> Variables & Scope</a></li>
-          <li class="nav-item"><a href="#conditionals"><span class="nav-num">04</span> Conditionals</a></li>
-          <li class="nav-item"><a href="#loops"><span class="nav-num">05</span> Loops & Iteration</a></li>
-          <li class="nav-item"><a href="#arrays"><span class="nav-num">06</span> Arrays & Methods</a></li>
-          <li class="nav-item"><a href="#strings"><span class="nav-num">07</span> Strings & Methods</a></li>
-          <li class="nav-item"><a href="#objects"><span class="nav-num">08</span> Objects & Keys</a></li>
+          <li class="nav-item"><a href="#datatypes"><span class="nav-num">04</span> Data Types</a></li>
+          <li class="nav-item"><a href="#operators"><span class="nav-num">05</span> Operators</a></li>
+          <li class="nav-item"><a href="#functions"><span class="nav-num">06</span> Functions</a></li>
+          <li class="nav-item"><a href="#conditionals"><span class="nav-num">07</span> Conditionals</a></li>
+          <li class="nav-item"><a href="#loops"><span class="nav-num">08</span> Loops & Iteration</a></li>
+          <li class="nav-item"><a href="#arrays"><span class="nav-num">09</span> Arrays & Methods</a></li>
+          <li class="nav-item"><a href="#strings"><span class="nav-num">10</span> Strings & Methods</a></li>
+          <li class="nav-item"><a href="#objects"><span class="nav-num">11</span> Objects & Keys</a></li>
         </ul>
       </div>
 
@@ -98,7 +101,7 @@
       <section class="hero-banner">
         <div class="hero-meta">
           <span class="badge-tag badge-yellow">Absolute Beginners</span>
-          <span class="badge-tag badge-purple">9 Comprehensive Modules</span>
+          <span class="badge-tag badge-purple">11 Comprehensive Modules</span>
           <span class="badge-tag badge-green">Code Runner Ready</span>
         </div>
         <h1 class="hero-title">Learn Modern JavaScript from Scratch</h1>
@@ -498,12 +501,604 @@ npm -v</code></pre>
       </section>
 
       <!-- =========================================================================
-           SECTION 4: CONDITIONALS
+           SECTION 4: DATA TYPES
+           ========================================================================= -->
+      <section id="datatypes" class="guide-section" data-topic="datatypes data types primitives non-primitive string number boolean undefined null symbol bigint object array function typeof type coercion">
+        <div class="section-header">
+          <div class="section-number-tag">Module 04</div>
+          <h2 class="section-title">Data Types & Type System</h2>
+          <p class="section-subtitle">Understanding JavaScript's 7 primitive types, non-primitive references (Objects, Arrays, Functions), and the <code>typeof</code> operator.</p>
+        </div>
+
+        <div class="content-block">
+          <p>
+            In JavaScript, every value has an associated <strong>Data Type</strong>. JavaScript is a <em>dynamically typed</em> language, meaning variables do not hold types—values do. A variable can hold a string, then later be reassigned to a number.
+          </p>
+
+          <div class="info-card">
+            <h3>Primitives vs. Non-Primitive (Reference) Types</h3>
+            <p>
+              JavaScript data types are split into two fundamental categories based on how they are stored in memory:
+            </p>
+          </div>
+
+          <div class="card-grid-2">
+            <div class="feature-box">
+              <div class="feature-box-icon">🧱</div>
+              <h3 class="feature-box-title">7 Primitive Data Types (Stored by Value)</h3>
+              <p class="feature-box-desc">
+                Immutable (cannot be altered once created), stored directly on the call stack, and compared by their actual <strong>value</strong>:
+              </p>
+              <ul style="margin: 0.5rem 0 0 1.2rem; font-size: 0.88rem; color: var(--text-muted);">
+                <li><code>string</code> — Text: <code>"Hello"</code>, <code>'world'</code>, <code>`Hi ${user}`</code></li>
+                <li><code>number</code> — Ints &amp; floats: <code>42</code>, <code>3.14</code>, <code>-7</code>, <code>NaN</code>, <code>Infinity</code></li>
+                <li><code>boolean</code> — Logical flag: <code>true</code> or <code>false</code></li>
+                <li><code>undefined</code> — Declared variable with no value assigned</li>
+                <li><code>null</code> — Intentional empty value / absence of object</li>
+                <li><code>symbol</code> — Unique, immutable token: <code>Symbol("id")</code></li>
+                <li><code>bigint</code> — Arbitrary precision integer: <code>9007199254740991n</code></li>
+              </ul>
+            </div>
+            <div class="feature-box">
+              <div class="feature-box-icon">📦</div>
+              <h3 class="feature-box-title">Non-Primitive / Reference Types (Stored by Reference)</h3>
+              <p class="feature-box-desc">
+                Mutable collections of properties stored on the heap. Variables hold a <strong>memory reference (pointer)</strong> rather than the literal value:
+              </p>
+              <ul style="margin: 0.5rem 0 0 1.2rem; font-size: 0.88rem; color: var(--text-muted);">
+                <li><code>Object</code> — Key-value dictionary: <code>{ name: "Alex", role: "Dev" }</code></li>
+                <li><code>Array</code> — Indexed list (special object): <code>["JS", "HTML", "CSS"]</code></li>
+                <li><code>Function</code> — Callable executable block: <code>function() {}</code></li>
+                <li><code>Date</code>, <code>Map</code>, <code>Set</code>, <code>RegExp</code></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Data Types Summary Table -->
+          <h3 style="margin-top: 2rem; margin-bottom: 0.75rem;">The <code>typeof</code> Operator &amp; Type Matrix</h3>
+          <p>
+            The <code>typeof</code> operator checks the data type of an unevaluated operand. Here is the complete breakdown:
+          </p>
+
+          <div class="table-wrapper">
+            <table class="custom-table" aria-label="JavaScript Data Types and typeof results">
+              <thead>
+                <tr>
+                  <th>Data Type</th>
+                  <th>Category</th>
+                  <th>Example Syntax</th>
+                  <th><code>typeof</code> Output</th>
+                  <th>Key Characteristics</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>String</strong></td>
+                  <td>Primitive</td>
+                  <td><code>"JavaScript"</code>, <code>`Score: ${n}`</code></td>
+                  <td><code>"string"</code></td>
+                  <td>Immutable character sequence, zero-indexed.</td>
+                </tr>
+                <tr>
+                  <td><strong>Number</strong></td>
+                  <td>Primitive</td>
+                  <td><code>100</code>, <code>3.1415</code>, <code>NaN</code></td>
+                  <td><code>"number"</code></td>
+                  <td>Double precision 64-bit float (IEEE 754).</td>
+                </tr>
+                <tr>
+                  <td><strong>Boolean</strong></td>
+                  <td>Primitive</td>
+                  <td><code>true</code>, <code>false</code></td>
+                  <td><code>"boolean"</code></td>
+                  <td>Used for binary flags and conditional branching.</td>
+                </tr>
+                <tr>
+                  <td><strong>Undefined</strong></td>
+                  <td>Primitive</td>
+                  <td><code>let x;</code> (unassigned)</td>
+                  <td><code>"undefined"</code></td>
+                  <td>Default value of uninitialized variables and void functions.</td>
+                </tr>
+                <tr>
+                  <td><strong>Null</strong></td>
+                  <td>Primitive</td>
+                  <td><code>let target = null;</code></td>
+                  <td><code>"object"</code> <span class="badge-tag badge-yellow" style="font-size:0.65rem; padding: 0.1rem 0.35rem;">JS Quirk</span></td>
+                  <td>Explicit indicator of "empty" or "no value".</td>
+                </tr>
+                <tr>
+                  <td><strong>Symbol</strong></td>
+                  <td>Primitive</td>
+                  <td><code>Symbol("uniqueKey")</code></td>
+                  <td><code>"symbol"</code></td>
+                  <td>Guaranteed unique identifier, ideal for private object keys.</td>
+                </tr>
+                <tr>
+                  <td><strong>BigInt</strong></td>
+                  <td>Primitive</td>
+                  <td><code>9007199254740995n</code></td>
+                  <td><code>"bigint"</code></td>
+                  <td>Safe integers beyond <code>Number.MAX_SAFE_INTEGER</code>.</td>
+                </tr>
+                <tr>
+                  <td><strong>Object</strong></td>
+                  <td>Reference</td>
+                  <td><code>{ title: "JS", price: 0 }</code></td>
+                  <td><code>"object"</code></td>
+                  <td>Key-value map stored by memory reference.</td>
+                </tr>
+                <tr>
+                  <td><strong>Array</strong></td>
+                  <td>Reference</td>
+                  <td><code>[10, 20, 30]</code></td>
+                  <td><code>"object"</code></td>
+                  <td>Special object. Use <code>Array.isArray(arr)</code> to detect.</td>
+                </tr>
+                <tr>
+                  <td><strong>Function</strong></td>
+                  <td>Reference</td>
+                  <td><code>function() {}</code>, <code>() =&gt; {}</code></td>
+                  <td><code>"function"</code></td>
+                  <td>First-class citizen object that can be executed/called.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Runnable Code Block for Data Types -->
+          <div class="code-card" data-snippet-id="data-types-snippet">
+            <div class="code-header">
+              <div class="code-file-tag">
+                <span class="dot-indicator"></span>
+                <span>data-types-and-typeof.js</span>
+              </div>
+              <div class="code-actions">
+                <button class="btn-code-action btn-copy-code">📋 Copy Code</button>
+                <button class="btn-code-action btn-run-code">▶ Run in Browser</button>
+              </div>
+            </div>
+            <div class="code-body-wrapper">
+              <pre><code><span class="com">// ========================================================</span>
+<span class="com">// 1. PRIMITIVE DATA TYPES</span>
+<span class="com">// ========================================================</span>
+<span class="kwd">const</span> language = <span class="str">"JavaScript"</span>;            <span class="com">// String</span>
+<span class="kwd">const</span> versionYear = <span class="num">2025</span>;                 <span class="com">// Number</span>
+<span class="kwd">const</span> isAwesome = <span class="bool">true</span>;                   <span class="com">// Boolean</span>
+<span class="kwd">let</span> unassignedScore;                      <span class="com">// Undefined</span>
+<span class="kwd">const</span> emptySlot = <span class="bool">null</span>;                   <span class="com">// Null</span>
+<span class="kwd">const</span> uniqueId = <span class="fn">Symbol</span>(<span class="str">"apiKey"</span>);        <span class="com">// Symbol</span>
+<span class="kwd">const</span> hugeNumber = <span class="num">9007199254740991n</span>;     <span class="com">// BigInt</span>
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"--- 1. Primitives &amp; typeof ---"</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"language:"</span>, language, <span class="str">"-&gt; typeof:"</span>, <span class="kwd">typeof</span> language);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"versionYear:"</span>, versionYear, <span class="str">"-&gt; typeof:"</span>, <span class="kwd">typeof</span> versionYear);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"isAwesome:"</span>, isAwesome, <span class="str">"-&gt; typeof:"</span>, <span class="kwd">typeof</span> isAwesome);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"unassignedScore:"</span>, unassignedScore, <span class="str">"-&gt; typeof:"</span>, <span class="kwd">typeof</span> unassignedScore);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"emptySlot:"</span>, emptySlot, <span class="str">"-&gt; typeof:"</span>, <span class="kwd">typeof</span> emptySlot); <span class="com">// historical quirk: 'object'</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"uniqueId:"</span>, uniqueId, <span class="str">"-&gt; typeof:"</span>, <span class="kwd">typeof</span> uniqueId);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"hugeNumber:"</span>, hugeNumber, <span class="str">"-&gt; typeof:"</span>, <span class="kwd">typeof</span> hugeNumber);
+
+<span class="com">// ========================================================</span>
+<span class="com">// 2. NON-PRIMITIVE (REFERENCE) DATA TYPES</span>
+<span class="com">// ========================================================</span>
+<span class="kwd">const</span> student = { name: <span class="str">"Alex"</span>, age: <span class="num">22</span> };         <span class="com">// Object</span>
+<span class="kwd">const</span> techStack = [<span class="str">"React"</span>, <span class="str">"Node"</span>, <span class="str">"TypeScript"</span>]; <span class="com">// Array</span>
+<span class="kwd">const</span> greet = <span class="kwd">function</span>() { <span class="kwd">return</span> <span class="str">"Hello!"</span>; };    <span class="com">// Function</span>
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"\n--- 2. Non-Primitives &amp; typeof ---"</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"student object:"</span>, student, <span class="str">"-&gt; typeof:"</span>, <span class="kwd">typeof</span> student);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"techStack array:"</span>, techStack, <span class="str">"-&gt; typeof:"</span>, <span class="kwd">typeof</span> techStack);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Is techStack an array?:"</span>, <span class="fn">Array</span>.<span class="fn">isArray</span>(techStack)); <span class="com">// true</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"greet function:"</span>, <span class="str">"-&gt; typeof:"</span>, <span class="kwd">typeof</span> greet);</code></pre>
+            </div>
+            <div class="terminal-output-container">
+              <div class="terminal-header">
+                <div class="terminal-title">💻 Virtual Output Panel</div>
+                <div class="terminal-actions"><button class="terminal-clear-btn">Clear</button></div>
+              </div>
+              <div class="terminal-console-logs">
+                <div class="log-line"><span class="log-prompt">&gt;</span> <span class="log-value" style="color:var(--text-dim);">Click '▶ Run in Browser' to execute</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- JavaScript Quirks Callout -->
+          <div class="callout-box callout-warn">
+            <span class="callout-icon">💡</span>
+            <div class="callout-body">
+              <strong>Important JS Gotcha: Why does <code>typeof null</code> return <code>"object"</code>?</strong>
+              In the original 1995 implementation of JavaScript, values were represented with type tags in memory. The type tag for objects was <code>0</code>, and <code>null</code> was represented as a NULL pointer (all zeros <code>0x00</code>). As a result, <code>typeof null</code> returned <code>"object"</code>. Fixing this today would break millions of legacy websites, so it remains a famous JavaScript quirk! To check for <code>null</code> safely, use <code>myVar === null</code>.
+            </div>
+          </div>
+
+          <!-- Practice Challenge -->
+          <div class="practice-card">
+            <div class="practice-header">
+              <span class="practice-icon">🎯</span>
+              <h4 class="practice-title">Practice Challenge: Data Types in VS Code</h4>
+            </div>
+            <div class="practice-body">
+              <p>Paste the snippet into your <code>index.js</code> file in VS Code and test these scenarios:</p>
+              <ul class="practice-tasks">
+                <li>Declare a variable for each of the 7 primitive types and log <code>typeof variable</code> for each.</li>
+                <li>Create an array and verify why <code>typeof [] === "object"</code>, then use <code>Array.isArray([])</code> to properly verify it.</li>
+                <li>Test what <code>typeof NaN</code> outputs (Hint: IEEE 754 defines NaN as a special numeric value!).</li>
+              </ul>
+              <div class="practice-hint">
+                <strong>Pro Tip:</strong> When distinguishing between <code>undefined</code> and <code>null</code>: <code>undefined</code> means a variable has been declared but not defined yet, while <code>null</code> is an intentional assignment representing an empty value.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           SECTION 5: OPERATORS
+           ========================================================================= -->
+      <section id="operators" class="guide-section" data-topic="operators arithmetic assignment comparison logical ternary strict equality loose equality modulus exponentiation short-circuit">
+        <div class="section-header">
+          <div class="section-number-tag">Module 05</div>
+          <h2 class="section-title">Operators &amp; Expressions</h2>
+          <p class="section-subtitle">Performing arithmetic, variable assignments, strict comparisons, logical short-circuiting, and ternary operations.</p>
+        </div>
+
+        <div class="content-block">
+          <p>
+            An <strong>Operator</strong> is a special symbol used to perform operations on operands (values and variables). JavaScript features five essential categories of operators:
+          </p>
+
+          <div class="card-grid-3">
+            <div class="feature-box">
+              <h4 style="color: var(--accent-blue); margin-bottom: 0.35rem;">1. Arithmetic</h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">
+                <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code> (modulus/remainder), <code>**</code> (exponentiation), <code>++</code>, <code>--</code>
+              </p>
+            </div>
+            <div class="feature-box">
+              <h4 style="color: var(--accent-purple); margin-bottom: 0.35rem;">2. Assignment</h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">
+                <code>=</code>, <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code>, <code>**=</code>
+              </p>
+            </div>
+            <div class="feature-box">
+              <h4 style="color: var(--accent-green); margin-bottom: 0.35rem;">3. Comparison</h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">
+                Strict: <code>===</code>, <code>!==</code><br>
+                Loose: <code>==</code>, <code>!=</code><br>
+                Relational: <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>
+              </p>
+            </div>
+            <div class="feature-box">
+              <h4 style="color: var(--accent-amber); margin-bottom: 0.35rem;">4. Logical</h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">
+                <code>&amp;&amp;</code> (AND), <code>||</code> (OR), <code>!</code> (NOT), <code>??</code> (Nullish Coalescing)
+              </p>
+            </div>
+            <div class="feature-box">
+              <h4 style="color: var(--accent-rose); margin-bottom: 0.35rem;">5. Ternary</h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">
+                <code>condition ? ifTrue : ifFalse</code> (Inline compact <code>if/else</code>)
+              </p>
+            </div>
+            <div class="feature-box">
+              <h4 style="color: var(--accent-cyan); margin-bottom: 0.35rem;">6. String &amp; Type</h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">
+                <code>+</code> (Concatenation), <code>typeof</code>, <code>instanceof</code>
+              </p>
+            </div>
+          </div>
+
+          <!-- Runnable Code Block for Operators -->
+          <div class="code-card" data-snippet-id="operators-snippet">
+            <div class="code-header">
+              <div class="code-file-tag">
+                <span class="dot-indicator"></span>
+                <span>operators-mastery.js</span>
+              </div>
+              <div class="code-actions">
+                <button class="btn-code-action btn-copy-code">📋 Copy Code</button>
+                <button class="btn-code-action btn-run-code">▶ Run in Browser</button>
+              </div>
+            </div>
+            <div class="code-body-wrapper">
+              <pre><code><span class="com">// ========================================================</span>
+<span class="com">// 1. ARITHMETIC OPERATORS (+, -, *, /, %, **)</span>
+<span class="com">// ========================================================</span>
+<span class="kwd">const</span> a = <span class="num">10</span>;
+<span class="kwd">const</span> b = <span class="num">3</span>;
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"--- 1. Arithmetic ---"</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Addition (10 + 3):"</span>, a + b);           <span class="com">// 13</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Subtraction (10 - 3):"</span>, a - b);        <span class="com">// 7</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Multiplication (10 * 3):"</span>, a * b);     <span class="com">// 30</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Division (10 / 3):"</span>, (a / b).<span class="fn">toFixed</span>(<span class="num">2</span>)); <span class="com">// 3.33</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Remainder/Modulus (10 % 3):"</span>, a % b);  <span class="com">// 1</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Exponentiation (2 ** 4):"</span>, <span class="num">2</span> ** <span class="num">4</span>);    <span class="com">// 16</span>
+
+<span class="com">// ========================================================</span>
+<span class="com">// 2. ASSIGNMENT OPERATORS (=, +=, -=, *=, /=)</span>
+<span class="com">// ========================================================</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"\n--- 2. Compound Assignment ---"</span>);
+<span class="kwd">let</span> points = <span class="num">50</span>;
+points += <span class="num">25</span>; <span class="com">// Equivalent to: points = points + 25</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"points += 25 -&gt;"</span>, points); <span class="com">// 75</span>
+points -= <span class="num">15</span>; <span class="com">// points = points - 15</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"points -= 15 -&gt;"</span>, points); <span class="com">// 60</span>
+points *= <span class="num">2</span>;  <span class="com">// points = points * 2</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"points *= 2  -&gt;"</span>, points); <span class="com">// 120</span>
+points /= <span class="num">4</span>;  <span class="com">// points = points / 4</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"points /= 4  -&gt;"</span>, points); <span class="com">// 30</span>
+
+<span class="com">// ========================================================</span>
+<span class="com">// 3. COMPARISON OPERATORS (Strict === vs Loose ==)</span>
+<span class="com">// ========================================================</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"\n--- 3. Comparisons ---"</span>);
+<span class="kwd">const</span> numFive = <span class="num">5</span>;
+<span class="kwd">const</span> strFive = <span class="str">"5"</span>;
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Strict Equal (5 === '5'):"</span>, numFive === strFive);   <span class="com">// false (different types)</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Loose Equal (5 == '5'):"</span>, numFive == strFive);     <span class="com">// true (coerced type)</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Strict Not Equal (5 !== '5'):"</span>, numFive !== strFive); <span class="com">// true</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Greater or Equal (10 &gt;= 10):"</span>, <span class="num">10</span> &gt;= <span class="num">10</span>);          <span class="com">// true</span>
+
+<span class="com">// ========================================================</span>
+<span class="com">// 4. LOGICAL OPERATORS (&amp;&amp;, ||, !)</span>
+<span class="com">// ========================================================</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"\n--- 4. Logical Operators ---"</span>);
+<span class="kwd">const</span> hasTicket = <span class="bool">true</span>;
+<span class="kwd">const</span> isVIP = <span class="bool">false</span>;
+<span class="kwd">const</span> isBanned = <span class="bool">false</span>;
+
+<span class="kwd">const</span> canEnter = (hasTicket || isVIP) &amp;&amp; !isBanned;
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Access granted:"</span>, canEnter); <span class="com">// true</span>
+
+<span class="com">// Short-circuit evaluation demo:</span>
+<span class="kwd">const</span> defaultUser = <span class="str">""</span> || <span class="str">"Guest Developer"</span>;
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Fallback username (||):"</span>, defaultUser); <span class="com">// 'Guest Developer'</span>
+
+<span class="com">// ========================================================</span>
+<span class="com">// 5. TERNARY OPERATOR (condition ? trueVal : falseVal)</span>
+<span class="com">// ========================================================</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"\n--- 5. Ternary Operator ---"</span>);
+<span class="kwd">const</span> accountBalance = <span class="num">150</span>;
+<span class="kwd">const</span> purchaseAmount = <span class="num">120</span>;
+<span class="kwd">const</span> statusMsg = accountBalance &gt;= purchaseAmount 
+  ? <span class="str">"Transaction Approved 💳"</span> 
+  : <span class="str">"Insufficient Funds ❌"</span>;
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Status:"</span>, statusMsg);</code></pre>
+            </div>
+            <div class="terminal-output-container">
+              <div class="terminal-header">
+                <div class="terminal-title">💻 Virtual Output Panel</div>
+                <div class="terminal-actions"><button class="terminal-clear-btn">Clear</button></div>
+              </div>
+              <div class="terminal-console-logs">
+                <div class="log-line"><span class="log-prompt">&gt;</span> <span class="log-value" style="color:var(--text-dim);">Click '▶ Run in Browser' to execute</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Strict Equality vs Loose Equality Callout -->
+          <div class="callout-box callout-tip">
+            <span class="callout-icon">⭐</span>
+            <div class="callout-body">
+              <strong>Best Practice: Always Use Strict Equality (<code>===</code> and <code>!==</code>)</strong>
+              Loose equality (<code>==</code>) performs automatic type coercion behind the scenes, leading to dangerous bugs (e.g. <code>0 == false</code> is <code>true</code>, <code>"" == 0</code> is <code>true</code>, and <code>null == undefined</code> is <code>true</code>). Strict equality (<code>===</code>) compares both value AND data type without converting anything, keeping your logic bug-free!
+            </div>
+          </div>
+
+          <!-- Practice Challenge -->
+          <div class="practice-card">
+            <div class="practice-header">
+              <span class="practice-icon">🎯</span>
+              <h4 class="practice-title">Practice Challenge: Operators in VS Code</h4>
+            </div>
+            <div class="practice-body">
+              <p>Copy the snippet into VS Code and complete these challenges:</p>
+              <ul class="practice-tasks">
+                <li>Use the modulus operator <code>%</code> to determine if a number <code>const testNum = 17;</code> is even or odd (<code>testNum % 2 === 0</code>).</li>
+                <li>Calculate <code>2 ** 8</code> (2 to the power of 8) and log the result.</li>
+                <li>Write a ternary expression that assigns <code>"Senior"</code> if <code>age &gt;= 60</code>, otherwise <code>"Standard"</code>.</li>
+                <li>Test short-circuiting with <code>const displayName = userName || "Anonymous";</code>.</li>
+              </ul>
+              <div class="practice-hint">
+                <strong>Remember:</strong> Operator precedence determines evaluation order (e.g. multiplication <code>*</code> executes before addition <code>+</code>). Use parentheses <code>( )</code> to make your intended grouping explicit and readable.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           SECTION 6: FUNCTIONS
+           ========================================================================= -->
+      <section id="functions" class="guide-section" data-topic="functions declaration expression arrow parameters arguments return default rest scope invocation">
+        <div class="section-header">
+          <div class="section-number-tag">Module 06</div>
+          <h2 class="section-title">Functions &amp; Parameters</h2>
+          <p class="section-subtitle">Writing modular, reusable logic: Function Declarations, Function Expressions, Arrow Functions, Default Parameters, and Returns.</p>
+        </div>
+
+        <div class="content-block">
+          <p>
+            A <strong>Function</strong> is a reusable block of code designed to perform a particular task. Instead of repeating the same lines across your program (violating the <em>DRY</em> principle — Don't Repeat Yourself), you define a function once and invoke (call) it whenever needed.
+          </p>
+
+          <div class="card-grid-3">
+            <div class="feature-box">
+              <h4 style="color: var(--accent-cyan); margin-bottom: 0.35rem;">1. Function Declaration</h4>
+              <p style="font-size: 0.88rem; color: var(--text-muted);">
+                Defined with <code>function name() {}</code>. <strong>Hoisted</strong> to the top of their scope, so they can be invoked before their line of declaration.
+              </p>
+            </div>
+            <div class="feature-box">
+              <h4 style="color: var(--accent-purple); margin-bottom: 0.35rem;">2. Function Expression</h4>
+              <p style="font-size: 0.88rem; color: var(--text-muted);">
+                An anonymous function assigned to a <code>const</code> variable. <strong>Not hoisted</strong>—cannot be called before declaration line.
+              </p>
+            </div>
+            <div class="feature-box">
+              <h4 style="color: var(--accent-green); margin-bottom: 0.35rem;">3. Arrow Function (ES6)</h4>
+              <p style="font-size: 0.88rem; color: var(--text-muted);">
+                Modern concise syntax <code>(params) =&gt; expression</code>. Features implicit returns for one-liners and lexical <code>this</code> binding.
+              </p>
+            </div>
+          </div>
+
+          <!-- Comparison Table for Function Types -->
+          <h3 style="margin-top: 2rem; margin-bottom: 0.75rem;">Function Types Syntax &amp; Differences</h3>
+          <div class="table-wrapper">
+            <table class="custom-table" aria-label="Comparison between function declarations, expressions, and arrow functions">
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Syntax Example</th>
+                  <th>Hoisted?</th>
+                  <th>Implicit Return?</th>
+                  <th>Best Use Case</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Function Declaration</strong></td>
+                  <td><code>function add(a, b) { return a + b; }</code></td>
+                  <td><span class="status-check">✔ Yes</span></td>
+                  <td><span class="status-cross">✖ No</span> (requires <code>return</code>)</td>
+                  <td>Top-level utility functions, methods, general purpose logic.</td>
+                </tr>
+                <tr>
+                  <td><strong>Function Expression</strong></td>
+                  <td><code>const add = function(a, b) { return a + b; };</code></td>
+                  <td><span class="status-cross">✖ No</span> (TDZ)</td>
+                  <td><span class="status-cross">✖ No</span></td>
+                  <td>Conditional function assignments, callbacks, modular exports.</td>
+                </tr>
+                <tr>
+                  <td><strong>Arrow Function</strong></td>
+                  <td><code>const add = (a, b) =&gt; a + b;</code></td>
+                  <td><span class="status-cross">✖ No</span> (TDZ)</td>
+                  <td><span class="status-check">✔ Yes</span> (on one-liners without <code>{}</code>)</td>
+                  <td>Array callbacks (<code>.map()</code>, <code>.filter()</code>), short utility helpers, preserving <code>this</code>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Runnable Code Block for Functions -->
+          <div class="code-card" data-snippet-id="functions-snippet">
+            <div class="code-header">
+              <div class="code-file-tag">
+                <span class="dot-indicator"></span>
+                <span>functions-mastery.js</span>
+              </div>
+              <div class="code-actions">
+                <button class="btn-code-action btn-copy-code">📋 Copy Code</button>
+                <button class="btn-code-action btn-run-code">▶ Run in Browser</button>
+              </div>
+            </div>
+            <div class="code-body-wrapper">
+              <pre><code><span class="com">// ========================================================</span>
+<span class="com">// 1. FUNCTION DECLARATION (Hoisted)</span>
+<span class="com">// ========================================================</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"--- 1. Function Declaration ---"</span>);
+
+<span class="com">// Can be called even BEFORE its definition line due to hoisting:</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">sayWelcome</span>(<span class="str">"Sarah"</span>));
+
+<span class="kwd">function</span> <span class="fn">sayWelcome</span>(name) {
+  <span class="kwd">return</span> <span class="str">`Welcome to the team, ${name}! 👋`</span>;
+}
+
+<span class="com">// ========================================================</span>
+<span class="com">// 2. FUNCTION EXPRESSION (Not hoisted)</span>
+<span class="com">// ========================================================</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"\n--- 2. Function Expression ---"</span>);
+
+<span class="kwd">const</span> multiply = <span class="kwd">function</span>(x, y) {
+  <span class="kwd">return</span> x * y;
+};
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"multiply(6, 7):"</span>, <span class="fn">multiply</span>(<span class="num">6</span>, <span class="num">7</span>)); <span class="com">// 42</span>
+
+<span class="com">// ========================================================</span>
+<span class="com">// 3. ARROW FUNCTIONS (ES6 Concise &amp; Implicit Return)</span>
+<span class="com">// ========================================================</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"\n--- 3. Arrow Functions ---"</span>);
+
+<span class="com">// Concise syntax with implicit return:</span>
+<span class="kwd">const</span> square = n =&gt; n * n;
+<span class="kwd">const</span> addTax = (subtotal, rate = <span class="num">0.15</span>) =&gt; subtotal + (subtotal * rate);
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"square(9):"</span>, <span class="fn">square</span>(<span class="num">9</span>)); <span class="com">// 81</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"addTax(100):"</span>, <span class="fn">addTax</span>(<span class="num">100</span>)); <span class="com">// 115 (used default rate 0.15)</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"addTax(100, 0.20):"</span>, <span class="fn">addTax</span>(<span class="num">100</span>, <span class="num">0.20</span>)); <span class="com">// 120 (custom rate)</span>
+
+<span class="com">// ========================================================</span>
+<span class="com">// 4. DEFAULT PARAMETERS &amp; REST PARAMETERS (...args)</span>
+<span class="com">// ========================================================</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"\n--- 4. Default &amp; Rest Parameters ---"</span>);
+
+<span class="com">// Default parameter values prevent 'undefined' bugs</span>
+<span class="kwd">function</span> <span class="fn">buildProfile</span>(username, role = <span class="str">"Junior Dev"</span>, status = <span class="str">"Active"</span>) {
+  <span class="kwd">return</span> { username, role, status };
+}
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Default params output:"</span>, <span class="fn">buildProfile</span>(<span class="str">"dev_alex"</span>));
+
+<span class="com">// Rest parameters collect any number of arguments into an Array</span>
+<span class="kwd">function</span> <span class="fn">sumAll</span>(...numbers) {
+  <span class="kwd">return</span> numbers.<span class="fn">reduce</span>((total, current) =&gt; total + current, <span class="num">0</span>);
+}
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"sumAll(10, 20, 30, 40):"</span>, <span class="fn">sumAll</span>(<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>, <span class="num">40</span>)); <span class="com">// 100</span></code></pre>
+            </div>
+            <div class="terminal-output-container">
+              <div class="terminal-header">
+                <div class="terminal-title">💻 Virtual Output Panel</div>
+                <div class="terminal-actions"><button class="terminal-clear-btn">Clear</button></div>
+              </div>
+              <div class="terminal-console-logs">
+                <div class="log-line"><span class="log-prompt">&gt;</span> <span class="log-value" style="color:var(--text-dim);">Click '▶ Run in Browser' to execute</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Arrow Function Tip -->
+          <div class="callout-box callout-tip">
+            <span class="callout-icon">⚡</span>
+            <div class="callout-body">
+              <strong>Arrow Function Pro-Tip: Implicit vs. Explicit Return</strong>
+              When an arrow function has no curly braces <code>{ }</code>, the expression after <code>=&gt;</code> is automatically returned (e.g. <code>const double = x =&gt; x * 2;</code>). If you add curly braces <code>{ }</code> to write multiple lines, you <strong>must explicitly use the <code>return</code> keyword</strong>, otherwise the function returns <code>undefined</code>!
+            </div>
+          </div>
+
+          <!-- Practice Challenge -->
+          <div class="practice-card">
+            <div class="practice-header">
+              <span class="practice-icon">🎯</span>
+              <h4 class="practice-title">Practice Challenge: Functions in VS Code</h4>
+            </div>
+            <div class="practice-body">
+              <p>Test these function exercises in your <code>index.js</code> file:</p>
+              <ul class="practice-tasks">
+                <li>Write a function declaration <code>celsiusToFahrenheit(c)</code> using the formula <code>(c * 9/5) + 32</code>.</li>
+                <li>Rewrite the same function as a one-line arrow function.</li>
+                <li>Write a function <code>formatPrice(amount, currency = "$")</code> that returns <code>`${currency}${amount.toFixed(2)}`</code>.</li>
+                <li>Write an arrow function <code>calcAverage(...grades)</code> using rest parameters to find the average of any number of test scores.</li>
+              </ul>
+              <div class="practice-hint">
+                <strong>Golden Rule:</strong> Functions should do one thing and do it well (Single Responsibility Principle). Use descriptive verb-based names like <code>calculateTotal</code>, <code>fetchUserData</code>, or <code>isValidEmail</code>.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           SECTION 7: CONDITIONALS
            ========================================================================= -->
       <section id="conditionals" class="guide-section" data-topic="conditionals if else switch ternary operator boolean truthy falsy">
         <div class="section-header">
-          <div class="section-number-tag">Module 04</div>
-          <h2 class="section-title">Conditionals & Decision Making</h2>
+          <div class="section-number-tag">Module 07</div>
+          <h2 class="section-title">Conditionals &amp; Decision Making</h2>
           <p class="section-subtitle">Guiding code execution paths using <code>if/else</code>, <code>switch</code>, and the ternary operator.</p>
         </div>
 
@@ -608,11 +1203,11 @@ npm -v</code></pre>
       </section>
 
       <!-- =========================================================================
-           SECTION 5: LOOPS & ITERATION
+           SECTION 8: LOOPS & ITERATION
            ========================================================================= -->
       <section id="loops" class="guide-section" data-topic="loops for while do while for of for in iteration break continue">
         <div class="section-header">
-          <div class="section-number-tag">Module 05</div>
+          <div class="section-number-tag">Module 08</div>
           <h2 class="section-title">Loops & Iteration</h2>
           <p class="section-subtitle">Automating repetitive tasks with <code>for</code>, <code>while</code>, <code>do...while</code>, <code>for...of</code>, and <code>for...in</code>.</p>
         </div>
@@ -724,11 +1319,11 @@ npm -v</code></pre>
       </section>
 
       <!-- =========================================================================
-           SECTION 6: ARRAYS & ARRAY METHODS
+           SECTION 9: ARRAYS & ARRAY METHODS
            ========================================================================= -->
       <section id="arrays" class="guide-section" data-topic="arrays push pop shift unshift foreach map filter find reduce includes slice splice methods">
         <div class="section-header">
-          <div class="section-number-tag">Module 06</div>
+          <div class="section-number-tag">Module 09</div>
           <h2 class="section-title">Arrays & Array Methods</h2>
           <p class="section-subtitle">Working with ordered lists, zero-based indexing, and the 12 essential array methods.</p>
         </div>
@@ -922,11 +1517,11 @@ playlist.<span class="fn">splice</span>(<span class="num">1</span>, <span class=
       </section>
 
       <!-- =========================================================================
-           SECTION 7: STRINGS & STRING METHODS
+           SECTION 10: STRINGS & STRING METHODS
            ========================================================================= -->
       <section id="strings" class="guide-section" data-topic="strings template literals length slice substring split trim toUpperCase toLowerCase includes replace concat">
         <div class="section-header">
-          <div class="section-number-tag">Module 07</div>
+          <div class="section-number-tag">Module 10</div>
           <h2 class="section-title">Strings & String Methods</h2>
           <p class="section-subtitle">Text manipulation, template literals <code>${}</code>, and 10 core string methods.</p>
         </div>
@@ -1048,11 +1643,11 @@ playlist.<span class="fn">splice</span>(<span class="num">1</span>, <span class=
       </section>
 
       <!-- =========================================================================
-           SECTION 8: OBJECTS & METHODS
+           SECTION 11: OBJECTS & METHODS
            ========================================================================= -->
       <section id="objects" class="guide-section" data-topic="objects properties dot notation bracket notation methods this Object.keys Object.values Object.entries">
         <div class="section-header">
-          <div class="section-number-tag">Module 08</div>
+          <div class="section-number-tag">Module 11</div>
           <h2 class="section-title">Objects & Object Methods</h2>
           <p class="section-subtitle">Structuring complex data with key-value pairs, nested objects, functions inside objects, and utility methods.</p>
         </div>
@@ -1156,7 +1751,7 @@ playlist.<span class="fn">splice</span>(<span class="num">1</span>, <span class=
               <ul class="practice-tasks">
                 <li>Add a new property <code>githubHandle: "@sarahc"</code> to the <code>developer</code> object.</li>
                 <li>Add a new method <code>haveBirthday()</code> that increments <code>this.age</code> by 1 and returns the new age.</li>
-                <li>Use <code>Object.entries()</code> in a <code>for...of</code> loop to print every key and value in format: <code>"key -> value"</code>.</li>
+                <li>Use <code>Object.entries()</code> in a <code>for...of</code> loop to print every key and value in format: <code>"key -&gt; value"</code>.</li>
               </ul>
               <div class="practice-hint">
                 <strong>Pro-tip:</strong> In object methods, standard function syntax (e.g. <code>greet() { ... }</code>) automatically binds <code>this</code> to the owning object, making it clean and intuitive.
@@ -1173,7 +1768,7 @@ playlist.<span class="fn">splice</span>(<span class="num">1</span>, <span class=
             <span>🚀</span> Next Steps on Your JavaScript Journey
           </h3>
           <p>
-            You have now covered all the core building blocks of JavaScript: <strong>Variables & Scoping</strong>, <strong>Conditionals</strong>, <strong>Loops</strong>, <strong>Arrays</strong>, <strong>Strings</strong>, and <strong>Objects</strong>!
+            You have now covered all the core building blocks of JavaScript: <strong>Variables &amp; Scoping</strong>, <strong>Data Types</strong>, <strong>Operators</strong>, <strong>Functions</strong>, <strong>Conditionals</strong>, <strong>Loops</strong>, <strong>Arrays</strong>, <strong>Strings</strong>, and <strong>Objects</strong>!
           </p>
           <p>
             Keep practicing daily inside VS Code using <strong>Code Runner</strong> (<span class="shortcut-kbd">Ctrl+Alt+N</span>). Try modifying values, writing your own functions, and testing new scenarios.

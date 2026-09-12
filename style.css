@@ -310,6 +310,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-image: var(--body-bg-gradient);
   background-attachment: fixed;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Smooth Theme Transitions */
@@ -470,11 +472,13 @@ body,
 .btn-header-action {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.4rem;
   background: var(--btn-header-bg);
   border: 1px solid var(--border-subtle);
   color: var(--text-main);
-  padding: 0.45rem 0.85rem;
+  padding: 0 0.85rem;
+  min-height: 44px;
   font-size: 0.85rem;
   font-weight: 500;
   border-radius: var(--radius-md);
@@ -488,13 +492,15 @@ body,
   border-color: var(--border-accent);
 }
 
-/* Theme Toggle Button */
+/* Theme Toggle Button (44px touch target) */
 .theme-toggle-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: var(--radius-md);
   background: var(--bg-toggle-btn);
   border: 1px solid var(--border-subtle);
@@ -540,14 +546,28 @@ body,
   display: inline-flex;
 }
 
+/* Hamburger Menu Button (44px touch target) */
 .menu-toggle-btn {
   display: none;
-  background: transparent;
-  border: none;
+  background: var(--btn-header-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
   color: var(--text-main);
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   cursor: pointer;
-  padding: 0.3rem;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+  padding: 0;
+}
+
+.menu-toggle-btn:hover {
+  background: var(--btn-header-hover-bg);
+  border-color: var(--border-accent);
 }
 
 /* Main Layout Grid */
@@ -594,6 +614,7 @@ body,
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 0.55rem 0.75rem 0.55rem 2.2rem;
+  min-height: 44px;
   color: var(--text-main);
   font-size: 0.85rem;
   outline: none;
@@ -636,7 +657,8 @@ body,
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  padding: 0.5rem 0.75rem;
+  padding: 0.6rem 0.75rem;
+  min-height: 44px;
   border-radius: var(--radius-md);
   color: var(--text-muted);
   text-decoration: none;
@@ -1486,32 +1508,99 @@ body,
   color: var(--text-muted);
 }
 
-/* Responsive Media Queries */
+/* ==========================================================================
+   Responsive Design & Mobile Optimization System
+   - Desktop: > 768px (Sidebar + Main Stream)
+   - Tablet: 481px - 768px (Drawer Nav + Fluid Cards)
+   - Mobile: < 480px (Stacked Layout, 44px Touch Targets, Horizontal Code Scrolls)
+   ========================================================================== */
+
+/* Custom Smooth Scrollbars for Code Blocks & Tables */
+.code-body-wrapper::-webkit-scrollbar,
+.table-wrapper::-webkit-scrollbar,
+.terminal-console-logs::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+.code-body-wrapper::-webkit-scrollbar-track,
+.table-wrapper::-webkit-scrollbar-track,
+.terminal-console-logs::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.code-body-wrapper::-webkit-scrollbar-thumb,
+.table-wrapper::-webkit-scrollbar-thumb,
+.terminal-console-logs::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+.code-body-wrapper::-webkit-scrollbar-thumb:hover,
+.table-wrapper::-webkit-scrollbar-thumb:hover,
+.terminal-console-logs::-webkit-scrollbar-thumb:hover {
+  background: var(--border-accent);
+}
+
+/* Base Responsive Constraints */
+.layout-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-width: 0;
+}
+
+.content-area {
+  width: 100%;
+  min-width: 0;
+}
+
+.guide-section {
+  width: 100%;
+  min-width: 0;
+}
+
+.code-card,
+.terminal-output-container,
+.table-wrapper {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* 1. Large Screen / Narrow Desktop (max-width: 1080px) */
 @media (max-width: 1080px) {
   .sidebar {
     width: 250px;
   }
   .content-area {
-    padding: 2rem 1.5rem 5rem;
+    padding: 2rem 2rem 5rem;
   }
 }
 
+/* 2. Tablet & Mobile Drawer Navigation Breakpoint (max-width: 868px) */
 @media (max-width: 868px) {
   .menu-toggle-btn {
-    display: block;
+    display: inline-flex;
+  }
+
+  .site-header {
+    padding: 0 1rem;
   }
 
   .sidebar {
     position: fixed;
     top: var(--header-height);
     left: 0;
-    width: 280px;
+    width: 290px;
+    max-width: 85vw;
     height: calc(100vh - var(--header-height));
     z-index: 950;
     background: var(--bg-sidebar-mobile);
     transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: var(--shadow-sidebar-mobile);
+    padding: 1.25rem 1rem 3rem;
   }
 
   .sidebar.open {
@@ -1527,6 +1616,7 @@ body,
     height: calc(100vh - var(--header-height));
     background: var(--bg-backdrop);
     backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     z-index: 940;
   }
 
@@ -1534,34 +1624,311 @@ body,
     display: block;
   }
 
-  .hero-title {
-    font-size: 2rem;
+  .content-area {
+    padding: 1.75rem 1.5rem 5rem;
   }
 
-  .content-area {
-    padding: 1.5rem 1rem 4rem;
+  .hero-banner {
+    padding: 2.25rem 1.75rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.85rem, 4vw, 2.25rem);
   }
 
   .section-title {
-    font-size: 1.5rem;
+    font-size: clamp(1.45rem, 3.5vw, 1.75rem);
   }
 }
 
-@media (max-width: 540px) {
-  .hero-banner {
-    padding: 1.75rem 1.25rem;
+/* 3. Tablet Device Range (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .header-actions .badge-tag {
+    display: none;
   }
 
-  .hero-title {
-    font-size: 1.75rem;
+  .card-grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .card-grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.85rem;
   }
 
   .code-header {
     flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .btn-code-action {
+    min-height: 40px;
+    padding: 0.4rem 0.75rem;
+  }
+}
+
+/* 4. Small Tablet / Large Mobile (max-width: 640px) */
+@media (max-width: 640px) {
+  .header-actions .badge-tag {
+    display: none;
+  }
+
+  .hero-meta {
     gap: 0.5rem;
   }
 
-  .badge-tag {
+  .hero-feature-pills {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .feature-pill {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .card-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 5. Mobile Devices (< 480px) */
+@media (max-width: 480px) {
+  .site-header {
+    padding: 0 0.75rem;
+  }
+
+  .brand-text {
+    font-size: 1rem;
+  }
+
+  .brand-badge {
+    font-size: 0.95rem;
+    padding: 0.15rem 0.35rem;
+  }
+
+  .header-actions {
+    gap: 0.4rem;
+  }
+
+  .btn-header-action {
+    padding: 0 0.6rem;
+    font-size: 0.8rem;
+    min-height: 44px;
+  }
+
+  .btn-header-action span {
+    display: inline-block;
+  }
+
+  .content-area {
+    padding: 1.25rem 0.75rem 4rem;
+  }
+
+  .hero-banner {
+    padding: 1.5rem 1rem;
+    margin-bottom: 2rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .hero-title {
+    font-size: 1.65rem;
+    line-height: 1.25;
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-header {
+    margin-bottom: 1.25rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    flex-wrap: wrap;
+  }
+
+  .section-subtitle {
+    font-size: 0.92rem;
+  }
+
+  .card-grid-2,
+  .card-grid-3 {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    margin: 1.25rem 0;
+  }
+
+  .feature-box {
+    padding: 1rem;
+  }
+
+  .info-card {
+    padding: 1.15rem 1rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.25rem;
+  }
+
+  .setup-steps-list {
+    gap: 1rem;
+  }
+
+  .setup-step-item {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .step-num-badge {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+
+  .step-body h4 {
+    font-size: 1rem;
+  }
+
+  .timeline-track {
+    padding-left: 1.5rem;
+  }
+
+  .timeline-dot {
+    left: -1.5rem;
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Code Card Mobile Optimization */
+  .code-card {
+    border-radius: var(--radius-md);
+    margin: 1.25rem 0 1.75rem;
+  }
+
+  .code-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+    padding: 0.75rem 0.85rem;
+  }
+
+  .code-file-tag {
+    font-size: 0.78rem;
+  }
+
+  .code-actions {
+    width: 100%;
+    display: flex;
+    gap: 0.45rem;
+  }
+
+  .btn-code-action {
+    flex: 1;
+    min-height: 44px;
+    justify-content: center;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.5rem;
+  }
+
+  .code-body-wrapper {
+    padding: 1rem 0.85rem;
+  }
+
+  .code-body-wrapper pre {
+    font-size: 0.84rem;
+    line-height: 1.55;
+  }
+
+  /* Terminal Mobile Optimization */
+  .terminal-output-container {
+    padding: 0.75rem 0.85rem 0.85rem;
+  }
+
+  .terminal-header {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .terminal-title {
+    font-size: 0.72rem;
+  }
+
+  .terminal-clear-btn {
+    min-height: 40px;
+    min-width: 44px;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.8rem;
+  }
+
+  .terminal-console-logs {
+    font-size: 0.8rem;
+    max-height: 180px;
+  }
+
+  /* Practice Cards Mobile Optimization */
+  .practice-card {
+    padding: 1.15rem 1rem;
+    margin: 1.5rem 0;
+    border-radius: var(--radius-md);
+  }
+
+  .practice-title {
+    font-size: 1.05rem;
+  }
+
+  .practice-tasks li {
+    font-size: 0.88rem;
+    padding-left: 1.4rem;
+  }
+
+  /* Callout Boxes Mobile */
+  .callout-box {
+    padding: 0.9rem 1rem;
+    gap: 0.75rem;
+    margin: 1.25rem 0;
+    font-size: 0.88rem;
+  }
+
+  /* Tables Mobile Touch Optimization */
+  .custom-table {
+    font-size: 0.82rem;
+  }
+
+  .custom-table th,
+  .custom-table td {
+    padding: 0.65rem 0.75rem;
+  }
+
+  /* Toast Notifications Mobile */
+  .toast-container {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+  }
+
+  .toast {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.82rem;
+  }
+}
+
+/* 6. Extra Narrow Devices (< 360px) */
+@media (max-width: 360px) {
+  .brand-text span {
     display: none;
+  }
+
+  .btn-header-action span {
+    font-size: 0.75rem;
+  }
+
+  .code-body-wrapper pre {
+    font-size: 0.78rem;
   }
 }

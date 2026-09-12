@@ -177,6 +177,8 @@ function executeSnippetInVirtualConsole(codeString, logContainer) {
     if (val === undefined) return 'undefined';
     if (typeof val === 'string') return val;
     if (typeof val === 'number' || typeof val === 'boolean') return String(val);
+    if (typeof val === 'symbol') return val.toString();
+    if (typeof val === 'bigint') return `${val}n`;
     if (typeof val === 'function') return `[Function: ${val.name || 'anonymous'}]`;
     if (Array.isArray(val)) {
       try {
